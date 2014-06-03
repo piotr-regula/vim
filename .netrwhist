@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/regula/utils/config'
+let g:netrw_dirhist_2='/build/ltesdkroot/data/SC/K3LTEASN1/LN0.0_K3LTEASN1_0001_026_00/LN0.0_K3LTEASN1_0001_026_00/C_Test/SC_K3LTEASN1/Include/ttcn3'
+let g:netrw_dirhist_3='/build/ltesdkroot/data/SC/K3LTEASN1/LN0.0_K3LTEASN1_0001_026_00/LN0.0_K3LTEASN1_0001_026_00/C_Test/SC_K3LTEASN1/Include'
+let g:netrw_dirhist_4='/build/ltesdkroot/data/SC/K3LTEASN1/LN0.0_K3LTEASN1_0001_026_00/LN0.0_K3LTEASN1_0001_026_00/C_Test/SC_K3LTEASN1'
+let g:netrw_dirhist_5='/build/ltesdkroot/data/SC/K3LTEASN1/LN0.0_K3LTEASN1_0001_026_00/LN0.0_K3LTEASN1_0001_026_00/C_Test'
+let g:netrw_dirhist_6='/build/ltesdkroot/data/SC/K3LTEASN1/LN0.0_K3LTEASN1_0001_026_00/LN0.0_K3LTEASN1_0001_026_00'
+let g:netrw_dirhist_7='/build/ltesdkroot/data/SC/K3LTEASN1/LN0.0_K3LTEASN1_0001_026_00'
+let g:netrw_dirhist_8='/build/ltesdkroot/data/SC/K3LTEASN1/LN0.0_K3LTEASN1_0001_026_00/LN0.0_K3LTEASN1_0001_026_00/C_Test/SC_K3LTEASN1/Include/ttcn3'

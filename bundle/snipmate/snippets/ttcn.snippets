@@ -1,0 +1,105 @@
+# testcase
+snippet tcs
+	testcase ${1:COMP_BTC_Testcase}() runs on ${2:TestComponent}
+	{
+		setverdict(pass);
+		${3://code}
+	}
+snippet testcase
+	testcase ${1:COMP_BTC_Testcase}() runs on ${2:TestComponent}
+	{
+		setverdict(pass);
+		${3://code}
+	}
+
+snippet Tcs
+	testcase  ${1:COMP_BTC_Testcase}() runs on ${2:CPlaneTestComponent_3Cells} system ${3:CPlane_SystemComponent} 
+	{
+		${4://code}
+		setverdict(pass);
+	}
+snippet interleave
+	interleave
+	{
+		[] ${1:Port.receive}()
+		{
+			$1.send}();
+		}
+		[] ${2:Port2.receive}()
+		{
+			$2.send}();
+		}
+	}
+snippet control
+	if (match("${1:LTE}.${2:RROM_BTC_Testcase}", t_tcSelector))
+	{
+		execute ($2());
+	}
+snippet match
+	if (match("${1:LTE}.${2:RROM_BTC_Testcase}", t_tcSelector))
+	{
+		execute ($2());
+	}
+snippet import
+	import from ${1:components} ${2:all};
+snippet case
+	select (${1:condition})
+	{
+		case (${2:0})
+		{
+			${3://code}
+		}
+		case (${4:1})
+		{
+			${5://code}
+		}
+	}
+snippet convert
+	function conv${1:Type1}2${2:Type2} ( $1 ${3:source} ) return $2
+	{
+		var $2 ${4:output};
+		select ($3)
+		{
+			case ( ${5:0} )  { $4 := ${6:value}; }
+			case ( ${7:1} )  { $4 := ${8:value}; }
+			case else	{ $4 := ${9:value}; }
+		}
+		return $4;
+	}
+
+snippet conv
+	function conv${1:Type1}2${2:Type2} ( $1 ${3:source} ) return $2
+	{
+		var $2 ${4:output};
+		select ($3)
+		{
+			case ( ${5:0} )  { $4 := ${6:value}; }
+			case ( ${7:1} )  { $4 := ${8:value}; }
+			case else	{ $4 := ${9:value}; }
+		}
+		return $4;
+	}
+snippet for
+
+	for (var integer ${1:i} := 0; $1 < ${2:10}; $1 := $1 + 1)
+	{
+		${3://code}
+	}
+snippet if
+	if (${1:condition})
+	{
+		${2://code}
+	}
+snippet temp
+	var template ${1:type} ${2:l_var} := ${3:value};
+
+snippet func
+	function ${1:functionname}(template ${2:Type p_name:=default}) runs on UecTestComponent return template ${3:type}
+	{
+	    return ${4:a_Param()};
+	}
+
+snippet template
+	template ${1:type} a_${2:name}(${3:params})
+	{
+	}
