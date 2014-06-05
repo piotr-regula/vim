@@ -8,6 +8,7 @@ set softtabstop=4
 set ts=4 sw=4 et "indent settings  tabstop , shift (>>) width, expandtab
 set noea "set noequalalways - no window resize after close
 set tw=0 "no automatic line breaks
+filetype plugin on "enable filetype based plugins
 
 set ignorecase " search case options
 set smartcase
@@ -74,4 +75,3 @@ let g:neocomplcache_enable_auto_select = 1
 "grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
-
