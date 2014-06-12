@@ -36,6 +36,8 @@ map! <f11> <esc><f11>a
 nmap <silent><f12> :noh<cr>
 map! <f12> <ESC><f12>
 
+" use tagselect by default
+nnoremap <C-]> g<C-]>
 
 "save
 nmap <silent><C-S> :w <CR>
