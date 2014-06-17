@@ -1,6 +1,15 @@
 "================================================================
 "                           Map
 "================================================================
+
+"n  Normal mode map. Defined using ':nmap' or ':nnoremap'.
+"i  Insert mode map. Defined using ':imap' or ':inoremap'.
+"v  Visual and select mode map. Defined using ':vmap' or ':vnoremap'.
+"x  Visual mode map. Defined using ':xmap' or ':xnoremap'.
+"s  Select mode map. Defined using ':smap' or ':snoremap'.
+"c  Command-line mode map. Defined using ':cmap' or ':cnoremap'.
+"o  Operator pending mode map. Defined using ':omap' or ':onoremap'
+
 nmap , <Leader>
 "direxplorer
 nmap <silent><f1> :Sexplore<cr>
@@ -142,7 +151,7 @@ nmap <silent> <leader>gmock :%!~/devTools/generator/gmock_gen.py %<CR>
 nmap <silent> <leader>mock <leader>gmock
 nmap <silent> <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
 nmap <silent> <leader>header iheader<C-Tab><ESC>k,fdpF.DVU"ayiwi#ifndef <ESC>o#define <ESC>"apGo#endif<CR>o<ESC>
-
+nmap <silent> <leader>format :%s/\([{}]\)/\r\1/g:%!astyle
 "PLUGIN MAPPINGS
 
 "use region expanding on v/c-v
@@ -155,4 +164,5 @@ nmap <Leader>3 :Sscratch3<cr>
 nmap <Leader>4 :Sscratch4<cr>
 nmap <Leader>5 :Sscratch5<cr>
 nmap <Leader>6 :Sscratch6<cr>
+
 

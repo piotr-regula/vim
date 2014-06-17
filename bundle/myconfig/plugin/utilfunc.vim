@@ -28,6 +28,11 @@ fun! ShowFuncName()
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfun
 
+function CreateTags()
+    let curNodePath = g:NERDTreeFileNode.GetSelected().path.str()
+    exec ':!ctags -R --languages=php -f ' . curNodePath . '/tags ' . curNodePath
+endfunction
+
 fun! s:lolfun()
     echo "LOLOLOLOLOL"
 endfun
