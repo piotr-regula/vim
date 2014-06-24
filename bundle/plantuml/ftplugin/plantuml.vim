@@ -5,18 +5,18 @@
 " Version:      0.1
 "
 
-if exists("g:loaded_plantuml_plugin")
+if exists("b:loaded_plantuml_plugin")
     finish
 endif
-let g:loaded_plantuml_plugin = 1
+let b:loaded_plantuml_plugin = 1
 
-if !exists("g:plantuml_executable_script")
-	let g:plantuml_executable_script="plantuml"
+if !exists("b:plantuml_executable_script")
+	let b:plantuml_executable_script="plantuml"
 endif
-let s:path=expand("%")
-let s:path=fnameescape(s:path)
-let s:makecommand=g:plantuml_executable_script." ".s:path
+let b:path=expand("%")
+let b:path=fnameescape(b:path)
+let b:makecommand=b:plantuml_executable_script." ".b:path
 
 " define a sensible makeprg for plantuml files
-autocmd Filetype plantuml let &l:makeprg=s:makecommand
+autocmd Filetype plantuml let &l:makeprg=b:makecommand
 
