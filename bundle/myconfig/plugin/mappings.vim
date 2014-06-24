@@ -152,6 +152,7 @@ nmap <silent> <leader>mock <leader>gmock
 nmap <silent> <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
 nmap <silent> <leader>header iheader<C-Tab><ESC>k,fdpF.DVU"ayiwi#ifndef <ESC>o#define <ESC>"apGo#endif<CR>o<ESC>
 nmap <silent> <leader>format :%s/\([{}]\)/\r\1/g:%!astyle
+nmap <silent> <leader>make :cfile ~/.dump/makedump<CR>:cw<CR>
 "PLUGIN MAPPINGS
 
 "use region expanding on v/c-v
