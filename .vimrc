@@ -72,6 +72,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#828282 ctermbg=4
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 
+"Mark
+let g:mwDefaultHighlightingPalette = 'extended'
+
 "grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
