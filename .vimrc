@@ -78,3 +78,4 @@ let g:mwDefaultHighlightingPalette = 'extended'
 "grep
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
+

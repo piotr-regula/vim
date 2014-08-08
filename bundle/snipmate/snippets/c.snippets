@@ -185,6 +185,18 @@ snippet fileread
 		word something something;
 	}
 	file.close()
+
+#########################
+# STL Snippets
+#########################
+snippet imax
+	#include <limits>
+snippet max
+	std::numeric_limits<${1:type}>::max()
+snippet imin
+	#include <limits>
+snippet min
+	std::numeric_limits<${1:type}>::min()
 #########################
 # BOOST Snippets
 #########################
