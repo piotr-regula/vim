@@ -18,7 +18,6 @@ function! OpenSource()
   endif
 endfun
 
-
 fun! ShowFuncName()
   let lnum = line(".")
   let col = col(".")
