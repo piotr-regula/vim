@@ -149,11 +149,24 @@ inoremap <buffer> <expr><S-Tab> "\<C-P>"
 "generate gmock files in current buffer
 nmap <silent> <leader>gmock :%!~/devTools/generator/gmock_gen.py %<CR>
 nmap <silent> <leader>mock <leader>gmock
+"create include statement from full path
 nmap <silent> <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
+"add header
 nmap <silent> <leader>header iheader<C-Tab><ESC>k,fdpF.DVU"ayiwi#ifndef <ESC>o#define <ESC>"apGo#endif<CR>o<ESC>
+"format file
 nmap <silent> <leader>format :%s/\([{}]\)/\r\1/g:%!astyle
+"load quickfix with content from last make
 nmap <silent> <leader>make :cfile ~/.dump/makedump<CR>:cw<CR>
-nmap <silent> <leader>j blve<C-]><CR>
+"jump skipping I
+nmap <silent> <leader>j eblve<C-]><CR>
+"create plantuml flow and open it with eog
+nmap <silent> <leader>pu :make<CR>,ff:!eog<space><C-R>"<backspace>ng&<CR><CR>
+"search object inheritance
+nmap <silent> <leader>inh :Regrep<CR><Home>(public\|private\|protected).*<CR>
+"search object construction
+nmap <silent> <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
+"\(\\(\|>\)
+"<CR>
 "PLUGIN MAPPINGS
 
 "use region expanding on v/c-v

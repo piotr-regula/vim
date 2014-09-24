@@ -25,6 +25,7 @@ syn keyword cppSTL		abort abs accumulate acos adjacent_difference adjacent_find 
 
 syn keyword cppBoost		make_shared optional shared_ptr boost bind listof BOOST_FOREACH function iterator_range scoped_ptr
 syn match cppBoost		"\<_[1-9]\>"
+syn match ErrorMsg		"^#include.*cpp"
 
 syn keyword cppTest	TEST_F EXPECT_CALL ON_CALL EXPECT_TRUE ASSERT_TRUE ASSERT_THAT NiceMock StrictMock EXPECT_EQ
 syn match cppTest "\<Times\>"
