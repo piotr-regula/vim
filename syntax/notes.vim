@@ -12,6 +12,7 @@ endif
 syn sync fromstart
 
 syn match Error  "@note.*"
+syn match Error  "^note.*"
 
 let b:current_syntax = "notes"
 

@@ -152,7 +152,7 @@ nmap <silent> <leader>mock <leader>gmock
 "create include statement from full path
 nmap <silent> <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
 "add header
-nmap <silent> <leader>header iheader<C-Tab><ESC>k,fdpF.DVU"ayiwi#ifndef <ESC>o#define <ESC>"apGo#endif<CR>o<ESC>
+nmap <silent> <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
 "format file
 nmap <silent> <leader>format :%s/\([{}]\)/\r\1/g:%!astyle
 "load quickfix with content from last make
