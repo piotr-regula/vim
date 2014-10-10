@@ -154,7 +154,7 @@ nmap <silent> <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
 "add header
 nmap <silent> <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
 "format file
-nmap <silent> <leader>format :%s/\([{}]\)/\r\1/g:%!astyle
+nmap <silent> <leader>format :%s/\([{}]\)/\r\1/g<CR>:%!astyle<CR>
 "load quickfix with content from last make
 nmap <silent> <leader>make :cfile ~/.dump/makedump<CR>:cw<CR>
 "jump skipping I
@@ -165,8 +165,8 @@ nmap <silent> <leader>pu :make<CR>,ff:!eog<space><C-R>"<backspace>ng&<CR><CR>
 nmap <silent> <leader>inh :Regrep<CR><Home>(public\|private\|protected).*<CR>
 "search object construction
 nmap <silent> <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
-"\(\\(\|>\)
-"<CR>
+"uppercase in insert mode
+imap <c-u> <esc>viwUea
 "PLUGIN MAPPINGS
 
 "use region expanding on v/c-v

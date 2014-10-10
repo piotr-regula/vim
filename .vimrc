@@ -79,9 +79,15 @@ let g:mwDefaultHighlightingPalette = 'extended'
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
 
+"search for all files in ctrlp
 let g:ctrlp_max_depth=100
 let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode = ""
 let g:ctrlp_custom_ignore='.git$|\tmp$\|swp$'
 let g:ctrlp_follow_symlings=1
 let ctrlp_clear_cache_on_exit=1
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+
+"keep multiple cursors
+let g:multi_cursor_exit_from_visual_mode=0
+let g:multi_cursor_exit_from_insert_mode=0
