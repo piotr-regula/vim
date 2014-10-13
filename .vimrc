@@ -1,7 +1,7 @@
 "==========================
 "      Main opts
 "==========================
-"
+
 set nu     "show line numbers / relative line numbers
 set autoindent "set tabs
 set softtabstop=4

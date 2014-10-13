@@ -11,173 +11,158 @@
 "o  Operator pending mode map. Defined using ':omap' or ':onoremap'
 
 nmap , <Leader>
+
+"FUNCTIONAL KEYS"""""""""""""""""""""""""""""""""""""""""""""""
+
 "direxplorer
-nmap <silent><f1> :Sexplore<cr>
-map! <f1> <esc><f1>a
+nnoremap <silent><f1> :Sexplore<cr>
+imap <f1> <esc><f1>a
 "quit
-nmap <silent><F2> :q<CR>
-map! <F2> <ESC><f2>a
+nnoremap <silent><F2> :q<CR>
+imap <F2> <ESC><f2>a
 "splits
-noremap <silent><F3> :set cursorline! cursorcolumn!<cr>
-map! <F3> <ESC><f3>a
+nnoremap <silent><F3> :set cursorline! cursorcolumn!<cr>
+imap <F3> <ESC><f3>a
 "buffers
-nmap <silent><F4> :CtrlP<CR>
-map! <F4> <ESC><F4>a
+nnoremap <silent><F4> :CtrlP<CR>
+imap <F4> <ESC><F4>a
 "FilesTree
-nmap <silent><F5> :NERDTreeToggle<CR>
-map! <F5> <ESC><F5>a
+nnoremap <silent><F5> :NERDTreeToggle<CR>
+imap <F5> <ESC><F5>a
 "Creating tabs
-nmap <silent><F6> :tab split<CR>
-map! <F6> <ESC><F6>a
+nnoremap <silent><F6> :tab split<CR>
+imap <F6> <ESC><F6>a
 "Grep
-nmap <silent> <F7> :Rgrep<CR>
-map! <F7> <esc><f7>a
+nnoremap <silent> <F7> :Rgrep<CR>
+imap <F7> <esc><f7>a
 "Temporary buffer
-nmap <silent><f9> :Sscratch<cr>
-map! <f9> <esc><f9>a
+nnoremap <silent><f9> :Sscratch<cr>
+imap <f9> <esc><f9>a
 "TagList
-nmap <silent> <F10> :TlistToggle<CR>
-map! <f10> <esc><f10>a
+nnoremap <silent> <F10> :TlistToggle<CR>
+imap <f10> <esc><f10>a
 "Svn Blame
-nmap <silent> <F11> :VCSBlame<CR>:set filetype=cpp<CR>
-map! <f11> <esc><f11>a
+nnoremap <silent> <F11> :VCSBlame<CR>:set filetype=cpp<CR>
+imap <f11> <esc><f11>a
 "clear search highlights
-nmap <silent><f12> :noh<cr>
-map! <f12> <ESC><f12>
+nnoremap <silent><f12> :noh<cr>
+imap <f12> <ESC><f12>
+
+"SMALL TWEAKS""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " use tagselect by default
-nnoremap <C-]> g<C-]>
-
+nmap <C-]> g<C-]>
+"Y = Yank from cursor till end of line
+nmap Y y$
+""no register replace during paste
+xnoremap p pgvy
+"reselect visual block after indent
+vnoremap < <gv
+vnoremap > >gv
+"move screen to word in search mode
+nmap <silent> n nzz
+nmap <silent> N Nzz
+nmap <silent> * *zz
+nmap <silent> # #zz
+nmap <silent> g* g*zz
+nmap <silent> g# g#zz
+"enable shift insert
+map! <s-insert> <c-r>*
+"Bubble single lines
+nnoremap <C-Up> ddkP
+nnoremap <C-Down> ddp
+"Bubble multiple lines
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
+"uppercase in insert mode
+imap <c-u> <esc>viwUea
 "save
-nmap <silent><C-S> :w <CR>
-map! <C-S> <esc><C-S>
-"copy blocks of code (from ( to ) from { to } etc )
-nmap <silent><C-C> V%y
-map! <C-C> <ESC><C-C>
+nnoremap <silent><C-S> :w <CR>
+imap <C-S> <esc><C-S>
+"copy lines of code (from ( to ) from { to } etc )
+nnoremap <silent><C-C> V%y
+imap <C-C> <ESC><C-C>
 "comment uncomment line
-nmap <silent><A-/> i<Home>//<Esc>
-map! <A-/> <Home>//
+nnoremap <silent><A-/> i<Home>//<Esc>
+imap <A-/> <Home>//
 "uncomment
-nmap <silent><A-.> i<Home><del><del><Esc>
-map! <A-.> <Home><del><del>
-"EasyMotion
-nmap <Space> ,w
-"Moving between windows
-map <S-W> <C-w><Up>
-map <S-S> <C-w><Down>
-map <S-A> <C-w><Left>
+nnoremap <silent><A-.> i<Home><del><del><Esc>
+imap <A-.> <Home><del><del>
+"resize split windows
+if bufwinnr(1)
+    nmap + <C-W>5+
+    nmap _ <C-W>5-
+endif
+
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap in[ :<c-u>normal! f[vi[<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap in" :<c-u>normal! f"vi"<cr>
+
+
+"VARIOUS MAPPINGS""""""""""""""""""""""""""""""""""""""""""""""
+
 " These work like * and g*, but do not move the cursor and always set hls.
 map <Leader>* :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
 map <Leader>g* :let @/ = expand('<cword>')\|set hlsearch<C-M>
-"nnoremap ; : ": without shift
 "clear search
-nmap <silent> ,/ :nohlsearch<CR>
-"Y = Yank from cursor till end of line
-nmap Y y$
-
-
+nmap <silent> <leader>/ :nohlsearch<CR>
 nmap <silent> <leader>hpp  :call OpenHeader()<CR>
 nmap <silent> <leader>cpp  :call OpenSource()<CR>
 nmap <silent> <leader>n  :call ShowFuncName()<CR>
 nmap <silent> <leader>g  :%!grep
+"delete trailing whitespaces
+nmap <silent> <leader><space> :%s/\s\+$//e<CR>
 "search trailing spaces
-nmap <silent> <leader><space>  / \+$<CR>
+nmap <silent> <leader>spaces / \+$<CR>
 "show menu bar
 nmap <silent> <leader>menu  :set guioptions+=m<CR>
-"delete trailing whitespaces
-nmap <silent> <leader>spaces :%s/\s\+$//e<CR>
-
-"filter out log
-nmap <silent> <leader>log    <ESC>:%s/^.*\(ERR\\|WRN\\|DBG\\|INF\)/\1/g<CR>
-nmap <silent> <leader>filter <leader>log<CR>
-nmap <silent> <leader>error <ESC>:%!grep "WRN\\\|ERR"<CR>
-nmap <silent> <leader>err   <leader>error<CR>
 "noerrorbellscopy path to buffer
-nnoremap <Leader>ff :let @"=expand("%")<CR>:let @*=expand("%")<CR>
-nnoremap <Leader>fd :let @"=expand("%:t")<CR>:let @*=expand("%:t")<CR>
+nmap <Leader>ff :let @"=expand("%")<CR>:let @*=expand("%")<CR>
+nmap <Leader>fd :let @"=expand("%:t")<CR>:let @*=expand("%:t")<CR>
 "pastemode
-nmap <silent> <leader>paste :set paste!<CR>
+nmap <leader>paste :set paste!<CR>
+"find merge conflicts
+nmap <leader>mc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+"create include statement from full path
+nmap <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
+"add header
+nmap <leader>header header<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
+"format file
+nmap <leader>format :%s/\([{}]\)/\r\1/g<CR>:%!astyle<CR>
+"load quickfix with content from last make
+nmap <leader>make :cfile ~/.dump/makedump<CR>:cw<CR>
+"jump skipping I
+nmap <leader>j eblve<C-]><CR>
+"create plantuml flow and open it with eog
+nmap <leader>pu :make<CR>,ff:!eog<space><C-R>"<backspace>ng&<CR><CR>
+"search object inheritance
+nmap <leader>inh :Regrep<CR><Home>(public\|private\|protected).*<CR>
+"search object construction
+nmap <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
+"source vim
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
-"visual with leader leader
-nmap <Leader><Leader> V
-
-"move screen to word in search mode
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-nnoremap <silent> g# g#zz
-"reselect visual block after indent
-vnoremap < <gv
-vnoremap > >gv
-
-"resize split windows
-if bufwinnr(1)
-    map + <C-W>5+
-    map _ <C-W>5-
-endif
-
+"FILES"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>vimrc     <f6>:e ~/.vimrc<cr>
 nmap <silent> <leader>map     <f6>:e ~/.vim/bundle/myconfig/plugin/mappings.vim<cr>
+nmap <silent> <leader>my     <f6>:e ~/.vim/bundle/myconfig/plugin/<cr>
 nmap <silent> <leader>ttcn      <f6>:e ~/.vim/bundle/snipmate/snippets/ttcn.snippets<cr>:set nofoldenable<cr>
 nmap <silent> <leader>c      <f6>:e ~/.vim/bundle/snipmate/snippets/c.snippets<cr>:set nofoldenable<cr>
 
-"enable shift insert
-map! <s-insert> <c-r>*
+"PLUGIN MAPPINGS"""""""""""""""""""""""""""""""""""""""""""""""
 
-"Bubble single lines
-nmap <C-Up> ddkP
-nmap <C-Down> ddp
-"Bubble multiple lines
-vmap <C-Up> xkP`[V`]
-vmap <C-Down> xp`[V`]
-
-""no register replace during paste
-xnoremap p pgvy
-
-"find merge conflicts
-nmap <silent> <leader>mc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 "Neocomplcache
-" <CR>: close popup and save indent.
-"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <buffer> <expr><Tab> pumvisible() ? "\<C-N>" : "\<tab>"
 inoremap <buffer> <expr><S-Tab> "\<C-P>"
-"
-"generate gmock files in current buffer
-nmap <silent> <leader>gmock :%!~/devTools/generator/gmock_gen.py %<CR>
-nmap <silent> <leader>mock <leader>gmock
-"create include statement from full path
-nmap <silent> <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
-"add header
-nmap <silent> <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
-"format file
-nmap <silent> <leader>format :%s/\([{}]\)/\r\1/g<CR>:%!astyle<CR>
-"load quickfix with content from last make
-nmap <silent> <leader>make :cfile ~/.dump/makedump<CR>:cw<CR>
-"jump skipping I
-nmap <silent> <leader>j eblve<C-]><CR>
-"create plantuml flow and open it with eog
-nmap <silent> <leader>pu :make<CR>,ff:!eog<space><C-R>"<backspace>ng&<CR><CR>
-"search object inheritance
-nmap <silent> <leader>inh :Regrep<CR><Home>(public\|private\|protected).*<CR>
-"search object construction
-nmap <silent> <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
-"uppercase in insert mode
-imap <c-u> <esc>viwUea
-"PLUGIN MAPPINGS
-
 "use region expanding on v/c-v
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-nmap <Leader>1 :Sscratch1<cr>
-nmap <Leader>2 :Sscratch2<cr>
-nmap <Leader>3 :Sscratch3<cr>
-nmap <Leader>4 :Sscratch4<cr>
-nmap <Leader>5 :Sscratch5<cr>
-nmap <Leader>6 :Sscratch6<cr>
-
+"Scratch buffers
+nnoremap <Leader>1 :Sscratch1<cr>
+nnoremap <Leader>2 :Sscratch2<cr>
+nnoremap <Leader>3 :Sscratch3<cr>
+nnoremap <Leader>4 :Sscratch4<cr>
+nnoremap <Leader>5 :Sscratch5<cr>
+nnoremap <Leader>6 :Sscratch6<cr>
 
