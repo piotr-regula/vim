@@ -81,7 +81,6 @@ nnoremap <silent><C-S> :w <CR>
 imap <C-S> <esc><C-S>
 "copy lines of code (from ( to ) from { to } etc )
 nnoremap <silent><C-C> V%y
-imap <C-C> <ESC><C-C>
 "comment uncomment line
 nnoremap <silent><A-/> i<Home>//<Esc>
 imap <A-/> <Home>//
