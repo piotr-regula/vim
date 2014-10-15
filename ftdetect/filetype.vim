@@ -1,7 +1,3 @@
-if did_filetype()   " filetype already set..
-      finish        " ..don't do these checks
-      endif
-
 " additional cpp file type
 au BufNewFile,BufRead *.ipp,*.cpp*.tmp setf cpp
 
@@ -32,13 +28,7 @@ au BufNewFile,BufRead *.tt setf cs
 " treat gitignore file as config file
 au BufNewFile,BufRead *.gitignore setf cfg
 
-au BufNewFile,BufRead *.ttcn* setf ttcn
-
-au BufNewFile,BufRead *.k3.txt  setf log
-
 au BufNewFile,BufRead *.LOG,*.out  setf out
-
-au BufNewFile,BufRead *ssionList.txt  setf regr
 
 au BufNewFile,BufRead *.notes  setf notes
 

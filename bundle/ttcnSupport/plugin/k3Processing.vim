@@ -11,9 +11,6 @@ fun! K3Filt()
     exec grepStart . listStart .
     \      'Function Enter' .
     \ or . 'Function Leave' .
-    \ or . 'Function Leave' .
-    \ or . 'Function Leave' .
-    \ or . 'Function Leave' .
     \ or . '\<Log\>' .
     \ or . 'Waiting for' .
     \ or . 'Begin test case' .
@@ -29,19 +26,42 @@ fun! K3Filt()
     exec foldContentInBracket
 endfun
 
+fun! SaveRegisterContent()
+    let  s:registerContent = @"
+endfun
+
+fun! RestoreRegisterContent()
+    let @"= s:registerContent
+endfun
+
+fun! IsCurrentWordValid()
+    return (expand('<cword>') ==? "Expected")
+endfun
+
 fun! K3Comp()
-    if expand('<cword>') ==? "Expected"
-        let  registerContent = @"
-        exec 'normal! Vjy'
+    let copyExpectedAndReceivedLines = 'normal! Vjy'
+    let deleteWholeBuffer = 'normal! ggVG"_d'
+    let pasteExpected = 'normal! pkJdt{jdd'
+    let format = 'silent! %s/\v([{,])/\1\r/g | silent! %s/}/\r}/g'
+    let noFileBuffer = 'setlocal buftype=nofile'
+    let pasteReceived = 'normal! pkJdt{'
+
+    if IsCurrentWordValid()
+        call SaveRegisterContent()
+        exec copyExpectedAndReceivedLines
         exec "split Expected"
-        exec 'normal! ggVG"_dpkJdt{jdd'
-        exec 'silent! %s/\v([{,])/\1\r/g | silent! %s/}/\r}/g'
+        exec deleteWholeBuffer 
+        exec pasteExpected
+        exec format
         exec "diffthis"
+        exec noFileBuffer
         exec "vsplit Received"
-        exec 'normal! ggVG"_dpkJdt{'
-        exec 'silent! %s/\v([{,])/\1\r/g | silent! %s/}/\r}/g'
+        exec deleteWholeBuffer 
+        exec pasteReceived
+        exec format
         exec "diffthis"
-        let @"= registerContent
+        exec noFileBuffer
+        call RestoreRegisterContent()
     endif
 
 endfun
