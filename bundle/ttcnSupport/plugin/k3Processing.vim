@@ -26,45 +26,70 @@ fun! K3Filt()
     exec foldContentInBracket
 endfun
 
-fun! SaveRegisterContent()
-    let  s:registerContent = @"
-endfun
-
-fun! RestoreRegisterContent()
-    let @"= s:registerContent
-endfun
-
 fun! IsCurrentWordValid()
     return (expand('<cword>') ==? "Expected")
 endfun
 
-fun! K3Comp()
-    let copyExpectedAndReceivedLines = 'normal! Vjy'
-    let deleteWholeBuffer = 'normal! ggVG"_d'
-    let pasteExpected = 'normal! pkJdt{jdd'
-    let format = 'silent! %s/\v([{,])/\1\r/g | silent! %s/}/\r}/g'
-    let noFileBuffer = 'setlocal buftype=nofile'
-    let pasteReceived = 'normal! pkJdt{'
+fun! CopyExpectedAndReceivedLines()
+    exec 'normal! Vjy'
+endfun
 
+fun! DeleteWholeBuffer()
+    exec 'normal! ggVG"_d'
+endfun
+
+fun! PasteExpected()
+    exec 'normal! pkJdt{jdd'
+endfun
+
+fun! PasteReceived()
+    exec 'normal! pkJdt{'
+endfun
+
+fun! FormatText()
+    exec 'silent! %s/\v([{,])/\1\r/g | silent! %s/}/\r}/g'
+endfun
+
+fun! NoFileBuffer()
+    exec 'setlocal buftype=nofile'
+endfun
+
+fun! PrepareExpectedBuffer()
+    exec "split Expected"
+    call DeleteWholeBuffer()
+    call PasteExpected()
+    call FormatText()
+    exec "diffthis"
+    call NoFileBuffer()
+endfun
+
+fun! PrepareReceivedBuffer()
+    exec "vsplit Received"
+    call DeleteWholeBuffer()
+    call PasteReceived()
+    call FormatText()
+    exec "diffthis"
+    call NoFileBuffer()
+endfun
+
+fun! OpenMismatchesInNewWindowAndShowDiff()
+    call SaveRegisterContent()
+    call CopyExpectedAndReceivedLines()
+    call PrepareExpectedBuffer()
+    call PrepareReceivedBuffer()
+    call RestoreRegisterContent()
+endfun
+
+fun! K3Comp()
     if IsCurrentWordValid()
-        call SaveRegisterContent()
-        exec copyExpectedAndReceivedLines
-        exec "split Expected"
-        exec deleteWholeBuffer 
-        exec pasteExpected
-        exec format
-        exec "diffthis"
-        exec noFileBuffer
-        exec "vsplit Received"
-        exec deleteWholeBuffer 
-        exec pasteReceived
-        exec format
-        exec "diffthis"
-        exec noFileBuffer
-        call RestoreRegisterContent()
+        call OpenMismatchesInNewWindowAndShowDiff()
     endif
+endfun
+
+fun! RunCurrentTestcase()
 
 endfun
+
 command! -nargs=0 K3Filt call K3Filt()
 command! -nargs=0 K3Comp call K3Comp()
 
