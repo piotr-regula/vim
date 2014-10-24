@@ -52,6 +52,7 @@ imap <f12> <ESC><f12>
 
 " use tagselect by default
 nmap <C-]> g<C-]>
+nmap <C-W><C-]> <C-W>g<C-]>
 "Y = Yank from cursor till end of line
 nmap Y y$
 ""no register replace during paste
