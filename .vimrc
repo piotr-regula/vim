@@ -39,7 +39,7 @@ let $PAGER=''
 "   visual configuration
 "==========================
 syntax on
-colorscheme ir_black
+colorscheme badwolf
 set guifont=Monaco\ 11
 
 set ruler
@@ -85,9 +85,40 @@ let g:ctrlp_max_files=0
 let g:ctrlp_working_path_mode = ""
 let g:ctrlp_custom_ignore='.git$|\tmp$\|swp$'
 let g:ctrlp_follow_symlings=1
-let ctrlp_clear_cache_on_exit=1
+"let ctrlp_clear_cache_on_exit=1
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 
 "keep multiple cursors
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
+
+"startify
+let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
+let g:startify_files_number = 6
+let g:startify_enable_special = 0
+let g:startify_custom_header = [
+\ "                                .d$$b                                                                                                                  ",
+\ "                              .' TO$;\                                                                                                                 ",
+\ "                             /  : TP._;                                                                                                                ",
+\ "                            / _.;  :Tb|                   ▄████████    ▄████████   ▄▄▄▄███▄▄▄▄   ███    █▄     ▄████████    ▄████████  ▄█                                                                                                       ",
+\ "                           /   /   ;j$j                  ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄ ███    ███   ███    ███   ███    ███ ███                                                                                                       ",
+\ "                       _.-\"       d$$$$                  ███    █▀    ███    ███ ███   ███   ███ ███    ███   ███    ███   ███    ███ ███▌                                                                                                     ",
+\ "                     .' ..       d$$$$;                  ███          ███    ███ ███   ███   ███ ███    ███  ▄███▄▄▄▄██▀   ███    ███ ███▌                                                                                                      ",
+\ "                    /  /P'      d$$$$P. |\              ▀███████████ ▀███████████ ███   ███   ███ ███    ███ ▀▀███▀▀▀▀▀   ▀███████████ ███▌                                                                                                      ",
+\ "                   /   \"      .d$$$P' |\^\"l                      ███   ███    ███ ███   ███   ███ ███    ███ ▀███████████   ███    ███ ███                                                                                                     ",
+\ "                 .'           `T$P^\"\"\"\"\"  :               ▄█    ███   ███    ███ ███   ███   ███ ███    ███   ███    ███   ███    ███ ███                                                                                                  ",
+\ "             ._.'      _.'                 ;            ▄████████▀    ███    █▀   ▀█   ███   █▀  ████████▀    ███    ███   ███    █▀  █▀                                                                                                        ",
+\ "          `-.-\".-'-' ._.       _.-\"     .-\"                                                                   ███    ███                                                                                                                     ",
+\ "        `.-\" _____  ._               .-\"                ▄█     █▄   ▄██████▄   ▄█          ▄████████                                                                                                                                          ",
+\ "       -(.g$$$$$$$b.                .'                 ███     ███ ███    ███ ███         ███    ███                                                                                                                                            ",
+\ "         \"\"^^T$$$P^)              .(:                  ███     ███ ███    ███ ███         ███    █▀                                                                                                                                           ",
+\ "           _/  -\"  /.'           /:/;                  ███     ███ ███    ███ ███        ▄███▄▄▄                                                                                                                                               ",
+\ "        ._.'-'`-'  \")/           /;/;                  ███     ███ ███    ███ ███       ▀▀███▀▀▀                                                                                                                                               ",
+\ "     `-.-\"..--\"\"   \" /           /  ;                  ███     ███ ███    ███ ███         ███                                                                                                                                               ",
+\ "    .-\" ..--\"\"        -'           :                   ███ ▄█▄ ███ ███    ███ ███▌    ▄   ███                                                                                                                                                ",
+\ "    ..--\"\"--.-\"         (\      .-(\                     ▀███▀███▀   ▀██████▀  █████▄▄██   ███                                                                                                                                                ",
+\ "      ..--\"\"                `-\(\/;`                                          ▀                                                                                                                                                       ",
+\ "        _.                        :                                                                                                                    ",
+\ "                                  ;`-                                                                                                                  ",
+\ "",
+\  ]
