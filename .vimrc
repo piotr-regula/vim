@@ -49,8 +49,8 @@ set t_Co=256 "support for 256 colors
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
+set linespace =-2  "fix for white borders
 set laststatus=2 "always display statusline
-
 "================================================================
 "       plugins
 "================================================================
@@ -94,8 +94,16 @@ let g:multi_cursor_exit_from_insert_mode=0
 
 "startify
 let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
-let g:startify_files_number = 6
+let g:startify_files_number = 10
 let g:startify_enable_special = 0
+let g:startify_list_order = [
+        \ [' Recent files'],
+        \ 'files',
+        \ [' Sessions'],
+        \ 'sessions',
+        \ [' Bookmarks'],
+        \ 'bookmarks',
+        \ ]
 let g:startify_custom_header = [
 \ "                                .d$$b                                                                                                                  ",
 \ "                              .' TO$;\                                                                                                                 ",
