@@ -28,8 +28,6 @@ au BufNewFile,BufRead *.tt setf cs
 " treat gitignore file as config file
 au BufNewFile,BufRead *.gitignore setf cfg
 
-au BufNewFile,BufRead *.LOG,*.out  setf out
-
 au BufNewFile,BufRead *.notes  setf notes
 
 au BufNewFile,BufRead *.pu,*.plantuml  setf plantuml
