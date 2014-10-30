@@ -14,3 +14,4 @@ fun! FindFiles(p_searchQuery)
     let &errorformat = efmToRestore
 endfun
 command! -nargs=1 Find call FindFiles(<f-args>)
+

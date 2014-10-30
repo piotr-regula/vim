@@ -95,6 +95,9 @@ let g:multi_cursor_exit_from_insert_mode=0
 "ttcnSupport
 let g:ttcnRootPath = '~/lte/trunk/'
 
+"myConfig
+let g:gmockGenCmd = '~/devTools/generator/gmock_gen.py'
+
 "startify
 let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
 let g:startify_files_number = 10

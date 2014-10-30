@@ -6,7 +6,6 @@ if !exists('g:ttcnMakeOpts')
     let g:ttcnMakeOpts=''
 endif
 
-
 if !exists('g:ttcnComponentFlag')
     let g:ttcnComponentFlag='SC='
 endif
