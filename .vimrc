@@ -92,6 +92,9 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
 
+"ttcnSupport
+let g:ttcnRootPath = '~/lte/trunk/'
+
 "startify
 let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
 let g:startify_files_number = 10
