@@ -86,10 +86,6 @@ fun! K3Comp()
     endif
 endfun
 
-fun! RunCurrentTestcase()
-
-endfun
-
 command! -nargs=0 K3Filt call K3Filt()
 command! -nargs=0 K3Comp call K3Comp()
 
