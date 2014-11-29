@@ -65,7 +65,7 @@ snippet wh
 	}
 # For Loop
 snippet for
-	for(${2:i} = 0; $2 < ${1:count}; $2${3:++}) 
+	for(${3:auto&} ${1:elem} : ${2:container}) 
 	{
 		${4:/* code */}
 	}
@@ -135,28 +135,28 @@ snippet gennotify
 #########################
 
 snippet deb
-	CPLANE_DEBUG(__LINE__) << __FUNCTION__ <<"() ${1:debug }";
+	CPLANE_DEBUG << __FUNCTION__ <<"() ${1:debug }";
 snippet debug
-	CPLANE_DEBUG(__LINE__) << __FUNCTION__ <<"() ${1:debug }";
+	CPLANE_DEBUG << __FUNCTION__ <<"() ${1:debug }";
 snippet DEBUG
-	CPLANE_DEBUG(__LINE__) << ${1: __FUNCTION__ };
+	CPLANE_DEBUG << ${1: __FUNCTION__ };
 snippet dupa
-	CPLANE_DEBUG(__LINE__) << ${1: __FUNCTION__ } << "DUPALOG";
+	CPLANE_DEBUG << ${1: __FUNCTION__ } << "DUPALOG";
 snippet DUPA
-	CPLANE_DEBUG(__LINE__) << ${1: __FUNCTION__ } << "DUPALOG";
+	CPLANE_DEBUG << ${1: __FUNCTION__ } << "DUPALOG";
 
 snippet wrn
-	CPLANE_WARN(__LINE__) << __FUNCTION__ <<"() ${1:warn }";
+	CPLANE_WARN << __FUNCTION__ <<"() ${1:warn }";
 snippet warn
-	CPLANE_WARN(__LINE__) << __FUNCTION__ <<"() ${1:warn }";
+	CPLANE_WARN << __FUNCTION__ <<"() ${1:warn }";
 
 snippet err
-	CPLANE_ERROR(__LINE__) << __FUNCTION__ <<"() ${1:warn }";
+	CPLANE_ERROR << __FUNCTION__ <<"() ${1:warn }";
 snippet error
-	CPLANE_ERROR(__LINE__) << __FUNCTION__ <<"() ${1:warn }";
+	CPLANE_ERROR << __FUNCTION__ <<"() ${1:warn }";
 
 snippet info
-	CPLANE_INFO(__LINE__) << __FUNCTION__ <<"() ${1:info }";
+	CPLANE_INFO << __FUNCTION__ <<"() ${1:info }";
 
 snippet name
 	namespace ${1:namespace}
@@ -288,6 +288,30 @@ snippet htuple
 #########################
 #    TESTS
 #########################
+snippet test 
+	#include <gtest/gtest.h>
+	
+	namespace ${1:component}
+	{
+	namespace Ut
+	{
+	
+	using namespace ::testing;
+	
+	struct ${2:`Filename('$1', 'name')`} : public Test
+	{
+	    $2() : $3() {}
+	    Type ${3:sut};
+	};
+	
+	TEST_F($2, testName)
+	{
+	
+	}
+	
+	}//namespace Ut
+	}//namespace $1
+
 snippet MATCHER_P
 	MATCHER_P(${1:WithMatchingType}, ${2:expected}, "${3:description}")
 	{
