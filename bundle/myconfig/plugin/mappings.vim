@@ -109,6 +109,7 @@ map <Leader>g* :let @/ = expand('<cword>')\|set hlsearch<C-M>
 nmap <silent> <leader>/ :nohlsearch<CR>
 nmap <silent> <leader>hpp  :call OpenHeader()<CR>
 nmap <silent> <leader>cpp  :call OpenSource()<CR>
+nmap <silent> <leader>ts  :call OpenTest()<CR>
 nmap <silent> <leader>n  :call ShowFuncName()<CR>
 nmap <silent> <leader>g  :%!grep
 "delete trailing whitespaces
@@ -117,8 +118,8 @@ nmap <silent> <leader><space> :%s/\s\+$//e<CR>
 nmap <silent> <leader>spaces / \+$<CR>
 "show menu bar
 nmap <silent> <leader>menu  :set guioptions+=m<CR>
-"noerrorbellscopy path to buffer
-nmap <Leader>ff :let @"=expand("%")<CR>:let @*=expand("%")<CR>
+"copy path buffer to register
+nmap <Leader>ff :let @"=expand("%:p")<CR>:let @*=expand("%:p")<CR>
 nmap <Leader>fd :let @"=expand("%:t")<CR>:let @*=expand("%:t")<CR>
 "pastemode
 nmap <leader>paste :set paste!<CR>
@@ -127,7 +128,7 @@ nmap <leader>mc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 "create include statement from full path
 nmap <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
 "add header
-nmap <leader>header header<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
+nmap <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
 "format file
 nmap <leader>format :%s/\([{}]\)/\r\1/g<CR>:%!astyle<CR>
 "load quickfix with content from last make
