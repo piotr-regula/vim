@@ -3,17 +3,26 @@
 "================================================================
 
 function! OpenHeader()
-  if match(expand("%"),'\.cpp') > 0
-    let s:flipname = substitute(expand("%"),'\.cpp\(.*\)','\.hpp\1',"")
+  if match(expand("%:p"),'\.cpp') > 0
+    let s:flipname = substitute(expand("%:p"),'\.cpp\(.*\)','\.hpp\1',"")
     let s:flipname = substitute(s:flipname,'Source','Include',"")
     exe ":e " . s:flipname
   endif
 endfun
 
 function! OpenSource()
-  if match(expand("%"),'\.hpp') > 0
-    let s:flipname = substitute(expand("%"),'\.hpp\(.*\)','\.cpp\1',"")
+  if match(expand("%:p"),'\.hpp') > 0
+    let s:flipname = substitute(expand("%:p"),'\.hpp\(.*\)','\.cpp\1',"")
     let s:flipname = substitute(s:flipname,'Include','Source',"")
+    exe ":e " . s:flipname
+  endif
+endfun
+
+function! OpenTest()
+  if match(expand("%:p"),'\.hpp\|\.cpp') > 0
+"    let s:flipname = substitute(expand("%:p"),'\.hpp\(.*\)','\.cpp\1',"")
+    let s:flipname = substitute(expand("%:p"),'\(.*\)\.cpp\|\.hpp\(.*\)','\1TestSuite\.cpp\2',"")
+    let s:flipname = substitute(s:flipname,'Include\|Source','Test_modules',"")
     exe ":e " . s:flipname
   endif
 endfun
