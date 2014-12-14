@@ -127,8 +127,6 @@ nmap <leader>paste :set paste!<CR>
 nmap <leader>mc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 "create include statement from full path
 nmap <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
-"add header
-nmap <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
 "format file
 nmap <leader>format :%s/\([{}]\)/\r\1/g<CR>:%!astyle<CR>
 "load quickfix with content from last make
@@ -136,18 +134,21 @@ nmap <leader>make :cfile ~/.dump/makedump<CR>:cw<CR>
 "jump skipping I
 nmap <leader>j eblve<C-]><CR>
 "create plantuml flow and open it with eog
-nmap <leader>pu :make<CR>,ff:!eog<space><C-R>"<backspace>ng&<CR><CR>
+nmap <leader>pu :make<CR>:let @"=expand("%:r")<CR>:!eog<space><C-R>".png&<CR><CR>
 "search object inheritance
 nmap <leader>inh :Regrep<CR><Home>(public\|private\|protected).*<CR>
 "search object construction
 nmap <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
 "source vim
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" change word under cursor: ,s
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 "FILES"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>vimrc     <f6>:e ~/.vimrc<cr>
 nmap <silent> <leader>map     <f6>:e ~/.vim/bundle/myconfig/plugin/mappings.vim<cr>
 nmap <silent> <leader>my     <f6>:e ~/.vim/bundle/myconfig/plugin/<cr>
+nmap <silent> <leader>plug     <f6>:e ~/.vim/bundle/<cr>
 nmap <silent> <leader>ttcn      <f6>:e ~/.vim/bundle/snipmate/snippets/ttcn.snippets<cr>:set nofoldenable<cr>
 nmap <silent> <leader>c      <f6>:e ~/.vim/bundle/snipmate/snippets/c.snippets<cr>:set nofoldenable<cr>
 
@@ -167,3 +168,5 @@ nnoremap <Leader>4 :Sscratch4<cr>
 nnoremap <Leader>5 :Sscratch5<cr>
 nnoremap <Leader>6 :Sscratch6<cr>
 
+"add header (uses snippet completion)
+nmap <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
