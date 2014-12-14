@@ -1,4 +1,11 @@
 fun! LogFilt(...)
+    let l:filt = a:1
+    if !empty(l:filt)
+        exec 'silent! %!grep -i ' . l:filt
+    endif
+endfun
+
+fun! LogFiltComponent(...)
     let l:componentName = a:1
     if !empty(l:componentName)
         let l:componentName = toupper(l:componentName)
@@ -10,15 +17,15 @@ endfun
 
 fun! LogFiltThread()
     let l:currentPath = expand('%:p')
-    let l:threadId = expand('<cword>')
-    call GenerateThreadFilter(l:currentPath, l:threadId)
+    let l:id = expand('<cword>')
+    call GenerateThreadFilter(l:currentPath, l:id)
 endfun
 
-fun! GenerateThreadFilter(sourceFilePath, threadId)
-    let l:bufName = "Thread-" . a:threadId . ".LOG"
+fun! GenerateThreadFilter(sourceFilePath, id)
+    let l:bufName = "Thread-" . a:id . ".LOG"
     split `=l:bufName`
     setlocal buftype=nofile
-    exec 'silent! .!grep "ThreadID:' . a:threadId . '" ' . a:sourceFilePath
+    exec 'silent! .!grep "ThreadID:[^]]*' . a:id . '" ' . a:sourceFilePath
 endfun
 
 fun! LogFiltError()
@@ -30,6 +37,7 @@ fun! LogSort()
 endfun
 
 command! -nargs=? LogFilt call LogFilt('<f-args>')
+command! -nargs=? LogFiltComponent call LogFiltComponent('<f-args>')
 command! -nargs=0 LogFiltThread call LogFiltThread()
 command! -nargs=0 LogFiltError call LogFiltError()
 command! -nargs=0 LogSort call LogSort()
