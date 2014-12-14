@@ -30,16 +30,6 @@ snippet interleave
 			$2.send}();
 		}
 	}
-snippet control
-	if (match("${1:LTE}.${2:RROM_BTC_Testcase}", t_tcSelector))
-	{
-		execute ($2());
-	}
-snippet match
-	if (match("${1:LTE}.${2:RROM_BTC_Testcase}", t_tcSelector))
-	{
-		execute ($2());
-	}
 snippet import
 	import from ${1:components} ${2:all};
 snippet case
