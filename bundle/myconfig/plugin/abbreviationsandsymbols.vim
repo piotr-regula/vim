@@ -2,7 +2,7 @@
 "                           Abbreviations & symbols
 "================================================================
 
-iabbrev abbrevExample dupa
+iabbrev XXX- ══════════════════════════════════════════════════════════════════════════
 
 "show trailing spaces
 set list
