@@ -20,7 +20,6 @@ endfun
 
 function! OpenTest()
   if match(expand("%:p"),'\.hpp\|\.cpp') > 0
-"    let s:flipname = substitute(expand("%:p"),'\.hpp\(.*\)','\.cpp\1',"")
     let s:flipname = substitute(expand("%:p"),'\(.*\)\.cpp\|\.hpp\(.*\)','\1TestSuite\.cpp\2',"")
     let s:flipname = substitute(s:flipname,'Include\|Source','Test_modules',"")
     exe ":e " . s:flipname
