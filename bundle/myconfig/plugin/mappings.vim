@@ -51,24 +51,25 @@ imap <f12> <ESC><f12>
 "SMALL TWEAKS""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " use tagselect by default
-nmap <C-]> g<C-]>
-nmap <C-W><C-]> <C-W>g<C-]>
+nnoremap <C-]> g<C-]>
+nnoremap <C-W><C-]> <C-W>g<C-]>
 "Y = Yank from cursor till end of line
-nmap Y y$
+nnoremap Y y$
 ""no register replace during paste
 xnoremap p pgvy
 "reselect visual block after indent
 vnoremap < <gv
 vnoremap > >gv
 "move screen to word in search mode
-nmap <silent> n nzz
-nmap <silent> N Nzz
-nmap <silent> * *zz
-nmap <silent> # #zz
-nmap <silent> g* g*zz
-nmap <silent> g# g#zz
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> g# g#zz
 "enable shift insert
-map! <s-insert> <c-r>*
+noremap! <s-insert> <c-r>*
+
 "Bubble single lines
 nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
@@ -94,6 +95,7 @@ if bufwinnr(1)
     nmap _ <C-W>5-
 endif
 
+" operation in brackets/" for other cursor positions
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
@@ -150,16 +152,19 @@ nmap <silent> <leader>map     <f6>:e ~/.vim/bundle/myconfig/plugin/mappings.vim<
 nmap <silent> <leader>my     <f6>:e ~/.vim/bundle/myconfig/plugin/<cr>
 nmap <silent> <leader>plug     <f6>:e ~/.vim/bundle/<cr>
 nmap <silent> <leader>ttcn      <f6>:e ~/.vim/bundle/snipmate/snippets/ttcn.snippets<cr>:set nofoldenable<cr>
-nmap <silent> <leader>c      <f6>:e ~/.vim/bundle/snipmate/snippets/c.snippets<cr>:set nofoldenable<cr>
+nmap <silent> <leader>c      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/cpp.snip<cr>
+nmap <silent> <leader>notes      <f6>:e ~/.vim/.notes<cr>:set nofoldenable<cr>
 
 "PLUGIN MAPPINGS"""""""""""""""""""""""""""""""""""""""""""""""
 
 "Neocomplcache
 inoremap <buffer> <expr><Tab> pumvisible() ? "\<C-N>" : "\<tab>"
 inoremap <buffer> <expr><S-Tab> "\<C-P>"
+
 "use region expanding on v/c-v
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
 "Scratch buffers
 nnoremap <Leader>1 :Sscratch1<cr>
 nnoremap <Leader>2 :Sscratch2<cr>
@@ -170,3 +175,16 @@ nnoremap <Leader>6 :Sscratch6<cr>
 
 "add header (uses snippet completion)
 nmap <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
+
+"neosnippets
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+

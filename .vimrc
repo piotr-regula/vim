@@ -51,6 +51,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set linespace =-2  "fix for white borders
 set laststatus=2 "always display statusline
+
 "================================================================
 "       plugins
 "================================================================
@@ -91,6 +92,11 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 "keep multiple cursors
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
+
+"neosnippets (For snippet_complete marker)
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+  endif
 
 "ttcnSupport
 let g:ttcnRootPath = '~/lte/trunk/'
