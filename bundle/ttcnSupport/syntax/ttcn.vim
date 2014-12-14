@@ -91,7 +91,7 @@ else
 endif
 
 "syn case ignore
-syn keyword ttcnTodo    xxx todo fixme contained
+syn keyword ttcnTodo    xxx todo fixme contained TODO
 "syn case match
 
 
