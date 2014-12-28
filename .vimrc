@@ -14,8 +14,8 @@ set ignorecase " search case options
 set smartcase
 set incsearch "auto move to search string
 set hlsearch
-let mapleader =" "
-let g:mapleader = " "
+let mapleader =","
+let g:mapleader = ","
 set novisualbell "dont flash screen
 set noerrorbells         " don't beep
 set t_vb= "visual beep disabled
@@ -97,9 +97,15 @@ let g:multi_cursor_exit_from_insert_mode=0
 if has('conceal')
   set conceallevel=2 concealcursor=i
   endif
+let g:neosnippet#snippets_directory= '~/.vim/bundle/neosnippet-snippets/mySnippets'
 
 "ttcnSupport
-let g:ttcnRootPath = '~/lte/trunk/'
+let g:ttcnRootPath = '~/lte/FB1407/'
+
+"pythonSupport
+let g:pymode = 1
+let g:pymode_rope = 1
+let g:pymode_folding = 0
 
 "myConfig
 let g:gmockGenCmd = '~/devTools/generator/gmock_gen.py'

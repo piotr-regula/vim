@@ -10,7 +10,6 @@
 "c  Command-line mode map. Defined using ':cmap' or ':cnoremap'.
 "o  Operator pending mode map. Defined using ':omap' or ':onoremap'
 
-nmap , <Leader>
 
 "FUNCTIONAL KEYS"""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -81,8 +80,6 @@ imap <c-u> <esc>viwUea
 "save
 nnoremap <silent><C-S> :w <CR>
 imap <C-S> <esc><C-S>
-"copy lines of code (from ( to ) from { to } etc )
-nnoremap <silent><C-C> V%y
 "comment uncomment line
 nnoremap <silent><A-/> i<Home>//<Esc>
 imap <A-/> <Home>//
@@ -153,6 +150,7 @@ nmap <silent> <leader>my     <f6>:e ~/.vim/bundle/myconfig/plugin/<cr>
 nmap <silent> <leader>plug     <f6>:e ~/.vim/bundle/<cr>
 nmap <silent> <leader>ttcn      <f6>:e ~/.vim/bundle/snipmate/snippets/ttcn.snippets<cr>:set nofoldenable<cr>
 nmap <silent> <leader>c      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/cpp.snip<cr>
+nmap <silent> <leader>snip      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/<cr>
 nmap <silent> <leader>notes      <f6>:e ~/.vim/.notes<cr>:set nofoldenable<cr>
 
 "PLUGIN MAPPINGS"""""""""""""""""""""""""""""""""""""""""""""""
