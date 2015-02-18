@@ -129,7 +129,7 @@ nmap <leader>pi pV:s/.*\///g<CR>i#include "<ESC>$a"<ESC>:noh<CR>
 "format file
 nmap <leader>format :%s/\([{}]\)/\r\1/g<CR>:%!astyle<CR>
 "load quickfix with content from last make
-nmap <leader>make :cfile ~/.dump/makedump<CR>:cw<CR>
+nmap <leader>make :cgetfile ~/.dump/makedump<CR>:cw<CR>
 "jump skipping I
 nmap <leader>j eblve<C-]><CR>
 "create plantuml flow and open it with eog
