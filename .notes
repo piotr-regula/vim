@@ -2,3 +2,13 @@ custom fold vimrc files
 bookmarks
 python from sys import argv
 python print "" % a
+color for trailing spaces
+remove trailing spaces on write
+gmockGen remove I (and move to Mocks subdirectory)
+jump to test
+class interface test snippets
+switchoocase break snippets
+move
+
+wrling ssh connnect any number of wrling (param)
+rmake cleanup aliases
