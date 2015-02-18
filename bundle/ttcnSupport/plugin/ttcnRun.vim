@@ -11,7 +11,7 @@ fun! ChangeDirectoryIfPathProvided()
     endif
 endfun
 
-fun! IsTestcaseNameValid(testcaseName)
+fun! IsTestcaseNameInvalid(testcaseName)
     return (a:testcaseName !~# s:testcaseMatcher)
 endfun
 
@@ -30,7 +30,7 @@ endfun
 
 fun! RunCurrentTestcase()
     let l:testcaseName = GetTestcaseName()
-    if(IsTestcaseNameValid(l:testcaseName))
+    if(IsTestcaseNameInvalid(l:testcaseName))
         echom "You are not inside testcase"
         return
     endif
