@@ -35,6 +35,9 @@ set completeopt=longest,menuone "select longest common text from matches, show m
 "config for viewing man pages in vim
 let $PAGER=''
 
+"blink closing tag in insert mode
+set showmatch
+
 "==========================
 "   visual configuration
 "==========================
@@ -66,7 +69,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_indent_levels = 3
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#575757   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#575757 ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#828282 ctermbg=4
 
 "neocomplcache
@@ -100,7 +103,7 @@ if has('conceal')
 let g:neosnippet#snippets_directory= '~/.vim/bundle/neosnippet-snippets/mySnippets'
 
 "ttcnSupport
-let g:ttcnRootPath = '~/lte/FB1407/'
+let g:ttcnRootPath = '~/lte/trunk/'
 
 "pythonSupport
 let g:pymode = 1
