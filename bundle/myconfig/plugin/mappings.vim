@@ -141,7 +141,9 @@ nmap <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
 "source vim
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " change word under cursor: ,s
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>
+" change selection (converting multiline ^n characters to \n)
+vnoremap <Leader>s "sy:%s/<C-r>=substitute(@s,"\n", '\\n', 'g')<CR>/
 
 "FILES"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>vimrc     <f6>:e ~/.vimrc<cr>
