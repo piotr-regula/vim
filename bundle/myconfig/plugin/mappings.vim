@@ -11,7 +11,9 @@
 "o  Operator pending mode map. Defined using ':omap' or ':onoremap'
 
 
-"FUNCTIONAL KEYS"""""""""""""""""""""""""""""""""""""""""""""""
+"================================================================
+"                           FUNCTIONAL KEYS
+"================================================================
 
 "direxplorer
 nnoremap <silent><f1> :Sexplore<cr>
@@ -47,7 +49,10 @@ imap <f11> <esc><f11>a
 nnoremap <silent><f12> :noh<cr>
 imap <f12> <ESC><f12>
 
-"SMALL TWEAKS""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"================================================================
+"                           SMALL TWEAKS
+"================================================================
 
 " use tagselect by default
 nnoremap <C-]> g<C-]>
@@ -99,7 +104,9 @@ onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
 
-"VARIOUS MAPPINGS""""""""""""""""""""""""""""""""""""""""""""""
+"================================================================
+"                       VARIOUS MAPPINGS
+"================================================================
 
 " These work like * and g*, but do not move the cursor and always set hls.
 map <Leader>* :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
@@ -145,7 +152,10 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>
 " change selection (converting multiline ^n characters to \n)
 vnoremap <Leader>s "sy:%s/<C-r>=substitute(@s,"\n", '\\n', 'g')<CR>/
 
-"FILES"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"================================================================
+"                       FILES
+"================================================================
+
 nmap <silent> <leader>vimrc     <f6>:e ~/.vimrc<cr>
 nmap <silent> <leader>map     <f6>:e ~/.vim/bundle/myconfig/plugin/mappings.vim<cr>
 nmap <silent> <leader>my     <f6>:e ~/.vim/bundle/myconfig/plugin/<cr>
@@ -155,7 +165,9 @@ nmap <silent> <leader>c      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippet
 nmap <silent> <leader>snip      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/<cr>
 nmap <silent> <leader>notes      <f6>:e ~/.vim/.notes<cr>:set nofoldenable<cr>
 
-"PLUGIN MAPPINGS"""""""""""""""""""""""""""""""""""""""""""""""
+"================================================================
+"                       PLUGIN MAPPINGS
+"================================================================
 
 "Neocomplcache
 inoremap <buffer> <expr><Tab> pumvisible() ? "\<C-N>" : "\<tab>"

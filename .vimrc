@@ -9,7 +9,6 @@ set ts=4 sw=4 et "indent settings  tabstop , shift (>>) width, expandtab
 set noea "set noequalalways - no window resize after close
 set tw=0 "no automatic line breaks
 filetype plugin on "enable filetype based plugins
-
 set ignorecase " search case options
 set smartcase
 set incsearch "auto move to search string
@@ -19,32 +18,28 @@ let g:mapleader = ","
 set novisualbell "dont flash screen
 set noerrorbells         " don't beep
 set t_vb= "visual beep disabled
-
 set hidden "hidden buffer
 set nobackup
 set noswapfile
-
 set bs=2 "working backspace
 
 set history=10000         " remember more commands and search history
 set undolevels=10000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.svn*,*.tmp*,*.orig,*.rej
-
 set completeopt=longest,menuone "select longest common text from matches, show menu even with one match
 "set clipboard=unnamed "let shift+insert work for default copy pasting
 "config for viewing man pages in vim
 let $PAGER=''
-
 "blink closing tag in insert mode
 set showmatch
 
 "==========================
 "   visual configuration
 "==========================
+
 syntax on
 colorscheme badwolf
 set guifont=Monaco\ 11
-
 set ruler
 set nowrap
 set nocompatible  "disable compatibility with older ver
@@ -55,9 +50,9 @@ set guioptions-=r  "remove right-hand scroll bar
 set linespace =-2  "fix for white borders
 set laststatus=2 "always display statusline
 
-"================================================================
+"==========================
 "       plugins
-"================================================================
+"==========================
 
 "pathogen enable
 execute pathogen#infect()
