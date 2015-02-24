@@ -37,5 +37,5 @@ endfun
 
 function CreateTags()
     let curNodePath = g:NERDTreeFileNode.GetSelected().path.str()
-    exec ':!ctags -R --languages=php -f ' . curNodePath . '/tags ' . curNodePath
+    exec ':!ctags -R -f ' . curNodePath . '/tags ' . curNodePath
 endfunction

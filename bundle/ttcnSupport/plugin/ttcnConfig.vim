@@ -1,5 +1,5 @@
 if !exists('g:ttcnMakeCmd')
-    let g:ttcnMakeCmd='make -f remote-cplane/Makefile sct-run'
+    let g:ttcnMakeCmd='make -f remote-cplane/Makefile sct-clean-logs sct-run'
 endif
 
 if !exists('g:ttcnMakeOpts')
