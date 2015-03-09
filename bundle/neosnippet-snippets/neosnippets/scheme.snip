@@ -1,17 +1,17 @@
-snippet     cond
+snippet	 cond
   (cond
-    ((${1}) ${2})
-    (${0:else}))
+	((${1}) ${2})
+	(${0:else}))
 
-snippet     case
+snippet	 case
   (case ${1}
-    ((${2}) ${3})
-    (${0:else}))
+	((${2}) ${3})
+	(${0:else}))
 
 # gauche specific
-snippet     gauche-testsuite
-abbr        (use gauche.test)(test-start ...
-options     head
+snippet	 gauche-testsuite
+abbr		(use gauche.test)(test-start ...
+options	 head
   (use gauche.test)
   (test-start "${1}.scm")
 

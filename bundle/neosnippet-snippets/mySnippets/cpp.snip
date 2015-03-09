@@ -1,3 +1,10 @@
 #scoped enum
 #lambda
 
+snippet    interface 
+abbr        class IName{}
+	class ${1:IName}
+	{
+	public:
+		virtual ~$1(){}
+	};

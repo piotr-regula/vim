@@ -3,7 +3,6 @@ python from sys import argv
 python print "" % a
 gmockGen remove I (and move to Mocks subdirectory)
 class interface test snippets
-header ->pragma
 switchoocase break snippets
 move
 

@@ -43,9 +43,9 @@ snippet env
 
 snippet tmp
 	${1:TMPFILE}="mktemp -t ${2:untitled}"
-	trap "rm -f '$${1}'" 0               # EXIT
-	trap "rm -f '$${1}'; exit 1" 2       # INT
-	trap "rm -f '$${1}'; exit 1" 1 15    # HUP TERM
+	trap "rm -f '$${1}'" 0			   # EXIT
+	trap "rm -f '$${1}'; exit 1" 2	   # INT
+	trap "rm -f '$${1}'; exit 1" 1 15	# HUP TERM
 	${0}
 
 snippet function
@@ -55,20 +55,20 @@ alias func
 		${0:TARGET}
 	}
 
-snippet     match-regexp
-abbr        =~
-options     head
+snippet	 match-regexp
+abbr		=~
+options	 head
 	if [[ $${1:string} =~ ${2:^regexp.*} ]]; then
 		${0}
 	fi
 
-snippet     assign
-abbr        var-assign
-options     head
+snippet	 assign
+abbr		var-assign
+options	 head
 	${1:name}="${2:something}"
 
-snippet     case
-options     head
+snippet	 case
+options	 head
 	case "$${1:{name\}}" in
 		${2:pattern*})
 			${0}
@@ -77,12 +77,12 @@ options     head
 			${3:echo "$$1 Didn't match anything"}
 	esac
 
-snippet     warn
-options     head
+snippet	 warn
+options	 head
 	echo "${0:TARGET}" 1>&2
 
-snippet     abort
-options     head
+snippet	 abort
+options	 head
 	echo "${0:TARGET}" 1>&2
 	exit 1
 

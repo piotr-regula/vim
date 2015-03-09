@@ -1,27 +1,27 @@
 snippet :f
 options head
   ${1:#:method_name}: function(${2:#:attribute}) {
-    ${0:TARGET}
+	${0:TARGET}
   }
 
 snippet function
-abbr    func
+abbr	func
 options word
   function ${1:#:function_name}(${2:#:argument}) {
-    ${0:TARGET}
+	${0:TARGET}
   }
 
 snippet function2
-abbr    func2
+abbr	func2
 options head
   function ${1:function_name}(${2:argument}) {
-    ${0:TARGET}
+	${0:TARGET}
   }
 
 snippet proto
 options head
   ${1:#:class_name}.prototype.${2:#:method_name} = function(${3:#:first_argument}) {
-    ${0:TARGET}
+	${0:TARGET}
   };
 
 
@@ -32,27 +32,27 @@ options word
 snippet if
 options head
   if (${1:true}) {
-    ${0:TARGET}
+	${0:TARGET}
   }
 
 snippet if-else
 abbr ife
 options head
   if (${1:#:condition}) {
-    ${0:TARGET}
+	${0:TARGET}
   } else {
   }
 
 snippet for
 options head
   for (var ${1:i}=0; $1 < ${2:#:Things}.length; ++$1) {
-    ${0:TARGET}
+	${0:TARGET}
   }
 
 snippet forin
 options head
   for (var ${1:i} in ${2:#:Things}) {
-    ${0:TARGET}
+	${0:TARGET}
   }
 
 snippet key-value

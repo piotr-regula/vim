@@ -1,60 +1,60 @@
-snippet     if
-abbr        if ... end
+snippet	 if
+abbr		if ... end
   if ${1:#:condition}
-    ${2:TARGET}
+	${2:TARGET}
   end
 
-snippet     def
-abbr        def ... end
+snippet	 def
+abbr		def ... end
   def ${1:#:method_name}
-    ${2:TARGET}
+	${2:TARGET}
   end
 
-snippet     defrescue
-alias       defr
-abbr        def ... rescue ... end
+snippet	 defrescue
+alias	   defr
+abbr		def ... rescue ... end
   def ${1:#:method_name}
-    ${2:TARGET}
+	${2:TARGET}
   rescue ${3:#:StandardError} => ${4:error}
-    ${5}
+	${5}
   end
 
-snippet     do
-abbr        do ... end
+snippet	 do
+abbr		do ... end
   do
-    ${1:TARGET}
+	${1:TARGET}
   end
 
-snippet     dovar
-abbr        do |var| ... end
+snippet	 dovar
+abbr		do |var| ... end
   do |${1:#:var}|
-    ${2:TARGET}
+	${2:TARGET}
   end
 
-snippet     block
-abbr        { ... }
+snippet	 block
+abbr		{ ... }
   {
-    ${1:TARGET}
+	${1:TARGET}
   }
 
-snippet     blockvar
-abbr        {|var| ... }
+snippet	 blockvar
+abbr		{|var| ... }
   { |${1:#:var}|
-    ${2:TARGET}
+	${2:TARGET}
   }
 
-snippet     fileopen
-alias       open
-abbr        File.open(filename) do ... end
+snippet	 fileopen
+alias	   open
+abbr		File.open(filename) do ... end
   File.open(${1:#:filename}, '${2:#:mode}') do |${3:io}|
-    ${0:TARGET}
+	${0:TARGET}
   end
 
-snippet     edn
-abbr        => end?
+snippet	 edn
+abbr		=> end?
   end
 
-snippet     urlencode
+snippet	 urlencode
   # coding: utf-8
   require 'erb'
   puts ERB::Util.url_encode '${1}'
@@ -71,7 +71,7 @@ options word
 snippet each_do
 options word
   each do |${1:#:variable}|
-    ${2}
+	${2}
   end
 
 snippet each_byte
@@ -105,7 +105,7 @@ options word
 snippet each_pair_do
 options word
   each_pair |${1:key},${2:value}| do
-    ${3}
+	${3}
   end
 
 snippet map
@@ -128,10 +128,10 @@ snippet lambda-keyword
 options word
   lambda { |${1:#:args}| ${2} }
 
-snippet     main
-options     head
+snippet	 main
+options	 head
   if __FILE__ == \$0
-    ${0:TARGET}
+	${0:TARGET}
   end
 
 # This idiom is only for legacy ruby such as 1.9.3
@@ -140,30 +140,30 @@ alias __dir__
 abbr File.dirname(...)
   File.dirname(File.expand_path(__FILE__))
 
-snippet     glob
-options     head
+snippet	 glob
+options	 head
   Dir.glob(${1:'**/*'}) do |fname|
-    ${0:TARGET}
+	${0:TARGET}
   end
 
-snippet     case
-abbr        case ... when ... else ... end
-options     head
+snippet	 case
+abbr		case ... when ... else ... end
+options	 head
   case ${1}
   when ${2}
-    ${3}
+	${3}
   else
-    ${4}
+	${4}
   end
 
-snippet     class
+snippet	 class
   class ${1:#:Name}
-    ${0}
+	${0}
   end
 
-snippet     module
+snippet	 module
   module ${1:#:Name}
-    ${0}
+	${0}
   end
 
 # vim:set et ts=2 sts=2 sw=2 tw=0:
