@@ -170,7 +170,6 @@ nmap <silent> <leader>notes      <f6>:e ~/.vim/.notes<cr>:set nofoldenable<cr>
 "================================================================
 
 "Neocomplcache
-inoremap <buffer> <expr><Tab> pumvisible() ? "\<C-N>" : "\<tab>"
 inoremap <buffer> <expr><S-Tab> "\<C-P>"
 
 "use region expanding on v/c-v
