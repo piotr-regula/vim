@@ -1,1 +1,6 @@
 .netrwhist
+sandbox.vim
+workPlug.vim
+session/
+.ropeproject/
+
