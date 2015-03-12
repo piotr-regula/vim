@@ -57,13 +57,17 @@ imap <f12> <ESC><f12>
 " use tagselect by default
 nnoremap <C-]> g<C-]>
 nnoremap <C-W><C-]> <C-W>g<C-]>
+
 "Y = Yank from cursor till end of line
 nnoremap Y y$
+
 ""no register replace during paste
 xnoremap p pgvy
+
 "reselect visual block after indent
 vnoremap < <gv
 vnoremap > >gv
+
 "move screen to word in search mode
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
@@ -71,6 +75,17 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
+
+"search for the next/previous selection
+vmap * "sy/<C-R>=substitute(@s,"\n", '\\n', 'g')<CR><CR>
+vmap # "sy?<C-R>=substitute(@s,"\n", '\\n', 'g')<CR><CR>
+
+" U as a more sensible redo
+nnoremap U <C-r>
+
+" go back to last buffer
+noremap <Backspace> :b#<CR>
+
 "enable shift insert
 noremap! <s-insert> <c-r>*
 
@@ -80,17 +95,22 @@ nnoremap <C-Down> ddp
 "Bubble multiple lines
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
+
 "uppercase in insert mode
 imap <c-u> <esc>viwUea
+
 "save
 nnoremap <silent><C-S> :w <CR>
 imap <C-S> <esc><C-S>
+
 "comment uncomment line
 nnoremap <silent><A-/> i<Home>//<Esc>
 imap <A-/> <Home>//
+
 "uncomment
 nnoremap <silent><A-.> i<Home><del><del><Esc>
 imap <A-.> <Home><del><del>
+
 "resize split windows
 if bufwinnr(1)
     nmap + <C-W>5+
