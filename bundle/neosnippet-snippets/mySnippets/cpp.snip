@@ -1,5 +1,4 @@
 #scoped enum
-#lambda
 
 snippet    interface 
 abbr        class IName{}
@@ -8,3 +7,179 @@ abbr        class IName{}
 	public:
 		virtual ~$1(){}
 	};
+
+snippet []
+abbr	[] lambda
+	[](${1:ParamType} ${2:param}){ ${3:statement}; }
+snippet h[]
+abbr	[] help lambda
+	[](${1:ParamType} ${2:param}) -> ${3:ReturnType} { ${4:statement}; }
+	
+	[]         Capture nothing (or, a scorched earth strategy?)
+	[&]        Capture any referenced variable by reference
+	[=]        Capture any referenced variable by making a copy
+	[=, &foo]  Capture any referenced variable by making a copy, but capture variable foo by reference
+	[bar]      Capture bar by making a copy; don't copy anything else
+	[this]     Capture the this pointer of the enclosing class
+
+
+snippet fun_obj
+abbr	struct Struct{ operator(){}};
+	struct myclass 
+	{
+		void operator() (${1:int} ${2:param}) { ${3:std::cout<<param;}}
+	} myobject;
+
+
+
+#########################
+# STL Snippets
+#########################
+snippet imax
+abbr    include max
+	#include <limits>
+snippet max
+	std::numeric_limits<${1:type}>::max()
+snippet imin
+abbr    include min
+	#include <limits>
+snippet min
+	std::numeric_limits<${1:type}>::min()
+snippet iset
+abbr    include set 
+	#include <set>
+
+snippet ivector
+abbr    include vector
+	#include <vector>
+
+snippet ifor_each
+abbr include for_each
+	#include <algorithm>
+snippet for_each
+	for_each(v.begin(), v.end(), func);
+
+snippet imakeshared
+alias   imake_shared
+abbr    include make_shared
+	#include <memory>
+snippet make_shared
+	std::make_shared<${1:type}>(${2:ctor_param})
+
+snippet ituple
+abbr    include tuple
+	#include <tuple>
+
+snippet tuple
+	std::tuple<${1:type1},${2:type2}> ${3:foo}(${4});
+
+snippet htuple
+	using ${1:StlPair} = std::tuple<${2:type1},${3:type2}>;
+	$1 ${4:bar} = std::make_tuple(${5:param1},${6:param2});
+	std::cout<<std::get<0>($4);
+	$2 var1;
+	$3 var2;
+	std::tie(var1, var2) = $4;
+	std::tie(std::ignore, var2) = $4;
+
+snippet ifunction
+abbr    include function
+	#include <functional>
+
+snippet functionstd
+alias funcstd
+abbr std::function()
+	std::function<${1:type}(${2:paramtype})> ${3:foo} = ${4:bar};
+#########################
+# BOOST Snippets
+#########################
+snippet ioptional
+	#include <boost/optional.hpp>
+
+snippet optional
+	boost::optional
+
+#########################
+#    TESTS
+#########################
+snippet Test
+	#include <gtest/gtest.h>
+	
+	namespace ${1:component}
+	{
+	namespace Ut
+	{
+	
+	using namespace ::testing;
+	
+	struct ${2:`expand('%:t:r')`} : public Test
+	{
+	    $2() : $3() {}
+	    Type ${3:sut};
+	};
+	
+	TEST_F($2, ${4:testName})
+	{
+	    ${5:ASSERT_TRUE(false);}
+	}
+	
+	}//namespace Ut
+	}//namespace $1
+
+snippet TestWithParam
+	#include <gtest/gtest.h>
+	typedef boost::tuple<bool, bool> param;
+	class TestSuite : public TestWithParam<param>
+	{
+	public:
+	    TestSuite();
+	
+	    const bool flag1;
+	    const bool flag2;
+	};
+	
+	
+	INSTANTIATE_TEST_CASE_P(
+	    TestSuiteParametrized,
+	    TestSuite,
+	    testing::Values(                 // flag1, flag2
+	           boost::make_tuple(true,  false),
+	           boost::make_tuple(false, true)));
+	
+	TestSuite::TestSuite() :
+	        flag1(boost::get<0>(GetParam())),
+	        flag2(boost::get<1>(GetParam())) {}
+	
+	TEST_P(RscBlockedByOtherMeasurementsCheckerTestSuite, testRscBlockedByOtherMeasurements)
+	{
+	}
+
+snippet TestWithParamExtension
+alias   TestWithParamInterface
+	class BaseTest : public ::testing::Test 
+	{
+	};
+	class BarTest : public BaseTest,
+	                public ::testing::WithParamInterface<Param>
+	{
+	};
+	TEST_P(BarTest, test)
+	{
+	}
+	
+	INSTANTIATE_TEST_CASE_P(
+	    BarTestParametrized,
+	    BarTest,
+	    testing::Values(
+	        Bar(foo, true),
+	        Bar(foo, false)
+	    ));
+
+snippet MATCHER_P
+alias  matcher 
+abbr    MATCHER_P(,,)
+	MATCHER_P(${1:WithMatchingType}, ${2:expected}, "${3:description}")
+	{
+	    return ${4:arg};
+	}
+
