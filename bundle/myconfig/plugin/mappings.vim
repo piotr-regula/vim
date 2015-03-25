@@ -171,6 +171,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>
 " change selection (converting multiline ^n characters to \n)
 vnoremap <Leader>s "sy:%s/<C-r>=substitute(@s,"\n", '\\n', 'g')<CR>/
+" sort lines by their length
+vnoremap <Leader>sl :!awk '{ print length, $0 }' \| sort -n \| awk '{$1=""; print $0}'<CR> 
 
 "================================================================
 "                       FILES
