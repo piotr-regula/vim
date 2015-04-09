@@ -28,8 +28,8 @@ imap <F3> <ESC><f3>a
 nnoremap <silent><F4> :CtrlP<CR>
 imap <F4> <ESC><F4>a
 "FilesTree
-nnoremap <silent><F5> :NERDTreeToggle<CR>
-imap <F5> <ESC><F5>a
+ nmap <silent><F5> i<Esc>:NERDTreeToggle<CR>
+ imap <F5> <ESC><F5>a
 "Creating tabs
 nnoremap <silent><F6> :tab split<CR>
 imap <F6> <ESC><F6>a
@@ -210,9 +210,9 @@ nnoremap <Leader>6 :Sscratch6<cr>
 nmap <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
 
 "neosnippets
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
