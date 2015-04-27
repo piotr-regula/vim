@@ -135,6 +135,7 @@ map <Leader>g* :let @/ = expand('<cword>')\|set hlsearch<C-M>
 nmap <silent> <leader>/ :nohlsearch<CR>
 nmap <silent> <leader>hpp  :call OpenHeader()<CR>
 nmap <silent> <leader>cpp  :call OpenSource()<CR>
+nmap <silent> <leader>code  :call OpenSourceCode()<CR>
 nmap <silent> <leader>ts  :call OpenTest()<CR>
 nmap <silent> <leader>n  :call ShowFuncName()<CR>
 nmap <silent> <leader>g  :%!grep

@@ -18,6 +18,13 @@ function! OpenSource()
   endif
 endfun
 
+function! OpenSourceCode()
+    let s:flipname = substitute(expand("%:p"),'\(.*\)TestSuite\(.*\)\|\(.*\)','\1\2\3',"")
+    let s:flipname = substitute(s:flipname,'\.hpp\(.*\)','\.cpp\1',"")
+    let s:flipname = substitute(s:flipname,'Include\|Test_modules','Source',"")
+    exe ":e " . s:flipname
+endfun
+
 function! OpenTest()
   if match(expand("%:p"),'\.hpp\|\.cpp') > 0
     let s:flipname = substitute(expand("%:p"),'\(.*\)\.cpp\|\.hpp\(.*\)','\1TestSuite\.cpp\2',"")
