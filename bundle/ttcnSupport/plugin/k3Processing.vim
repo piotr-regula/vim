@@ -53,14 +53,16 @@ endfun
 fun! NoFileBuffer()
     exec 'setlocal buftype=nofile'
 endfun
-
+fun! PrepareBuffer(bufferName)
+    exec "split " . a:bufferName
+    call NoFileBuffer()
+endfun
 fun! PrepareExpectedBuffer()
-    exec "split Expected"
+    call PrepareBuffer("Expected")
     call DeleteWholeBuffer()
     call PasteExpected()
     call FormatText()
     exec "diffthis"
-    call NoFileBuffer()
 endfun
 
 fun! PrepareReceivedBuffer()
@@ -86,7 +88,20 @@ fun! K3Comp()
     endif
 endfun
 
+fun! K3RrcReconf()
+    call OpenRrcReconfInNewWindow()
+endfun
+
+fun! OpenRrcReconfInNewWindow()
+    let @z=""
+    let copyAllRrcReconfToRegisterZ = '%g/rrcConnectionReconfiguration:=\n/normal! Vj%"Zy'
+    exec copyAllRrcReconfToRegisterZ
+    exec PrepareBuffer("RrcReconf")
+    exec 'normal! "zp'
+endfun
+
 command! -nargs=0 K3Filt call K3Filt()
 command! -nargs=0 K3Comp call K3Comp()
+command! -nargs=0 K3RrcReconf call K3RrcReconf()
 
 
