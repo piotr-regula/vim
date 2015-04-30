@@ -29,7 +29,11 @@ fun! GenerateThreadFilter(sourceFilePath, id)
 endfun
 
 fun! LogFiltError()
-    exec 'silent! %!grep "WRN\|ERR"'
+    exec 'silent! %!grep "WRN\/\|ERR\/"'
+endfun
+
+fun! LogFiltErrorExtended()
+    exec 'silent! %!grep -i "WRN\/\|ERR\/\|unexpect"'
 endfun
 
 fun! LogSort()
