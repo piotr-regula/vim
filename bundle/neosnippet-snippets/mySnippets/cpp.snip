@@ -1,5 +1,3 @@
-#scoped enum
-
 snippet    interface 
 abbr        class IName{}
 	class ${1:IName}
@@ -21,6 +19,7 @@ abbr	[] help lambda
 	[=, &foo]  Capture any referenced variable by making a copy, but capture variable foo by reference
 	[bar]      Capture bar by making a copy; don't copy anything else
 	[this]     Capture the this pointer of the enclosing class
+	[ptr = move(ptr)] move
 
 
 snippet fun_obj
@@ -31,6 +30,40 @@ abbr	struct Struct{ operator(){}};
 	} myobject;
 
 
+snippet args
+abbr	class(Args&&... args)
+alias	Args
+	template<typename... Args> ${1:className}(Args&&... args) : ${2:member}(std::forward<Args>(args)...)
+
+snippet copyDefault
+abbr default copy constructor & assign
+alias defaultCopy
+	${1:classType}(const $1&) = default;
+	$1& operator=(const $1&) = default; 
+
+snippet moveDefault
+abbr default move constr & assign
+alias defaultMove
+	${1:classType}($1&&) = default;
+	$1& operator=($1&&) = default;
+
+snippet using
+abbr using shortType=LongType<HardToType>
+	using ${1:newtype} = ${2:oldType};
+
+snippet getReturnType
+abbr getReturnType pattern for decltype
+alias decltypeGetReturnType
+	template<typename R, typename C, typename... Args > R getReturnType(R (C::*)(Args...));
+	auto ${1:funcName}() -> decltype(getReturnType(&${2:ObjectType}::${3:objFunc}))
+
+
+snippet enumClass 
+abbr enum class
+	enum class ${1:Color} 
+	{ 
+		${2:black, white, red} 
+	};
 
 #########################
 # STL Snippets
@@ -90,6 +123,63 @@ snippet functionstd
 alias funcstd, stdfunction, std::function
 abbr std::function()
 	std::function<${1:type}(${2:paramtype})> ${3:foo} = ${4:bar};
+
+snippet ichrono
+abbr include chrono
+	#include <chrono>
+
+snippet chrono_now
+abbr chrono::high_resolution_clock::now()
+	auto ${1:now} = std::chrono::high_resolution_clock::now();
+
+snippet hchrono
+abbr help chrono
+	#include <chrono>
+	auto start = std::chrono::high_resolution_clock::now();
+	auto finish = std::chrono::high_resolution_clock::now();
+	std::cout<< std::chrono::duration_cast<std::chrono::milliseconds>(finish-start).count();
+
+snippet iunordered_map
+abbr include unordered_map
+	#include <unordered_map>
+
+snippet unordered_map
+alias map_unordered
+abbr std::unordered_map<key,value>
+	std::unordered_map<${1:keyType}, ${2:valueType}> umap;
+
+snippet hunordered_map
+	std::unordered_map<${1:keyType}, ${2:valueType}> umap;
+	//O(1) lookup, const key, need more memory than map, O(n) worst case search complexity (many collisions)
+
+snippet imap
+abbr include map
+	#include <map>
+
+snippet map
+abbr std::map<key,value>
+	std::map<${1:keyType}, ${2:valueType}> myMap;
+
+snippet hmap
+	std::map<${1:keyType}, ${2:valueType}> myMap;
+	//O(log(n)) lookup, ordered elements, O(log(n)) worst case search complexity
+
+snippet ienable_if_t
+abbr include enable_if
+	#include <type_traits>
+
+snippet enable_if_t
+	std::enable_if_t<${1:condition}::value>
+
+snippet henable_if_t
+	template <typename T, typename = std::enable_if_t<!(std::is_integral<T>::value)>
+	template <typename T, typename = std::enable_if_t<
+							!std::is_base_of<ClassName, 
+											 typename std::decay_t<T>
+											 >::value
+						   > //decay removes const volatile reference etc from T
+
+
 #########################
 # BOOST Snippets
 #########################
@@ -183,3 +273,180 @@ abbr    MATCHER_P(,,)
 	    return ${4:arg};
 	}
 
+#########################
+#    THREADING
+#########################
+snippet thread
+abbr thread(&f, args...)
+	std::thread ${1:th1}(&${2:function}, ${3:args});
+	$1.join();
+
+snippet ithread
+abbr include thread
+	#include <thread>
+
+
+snippet hthread
+abbr help thread
+	include <thread>
+	std::thread th1(&fun, ref(argRef), cref(constArgRef));
+
+snippet atomic
+abbr atomic<>
+	std::atomic<${1:type}> ${2:atomicVar};
+
+snippet iatomic
+abbr include atomic
+	#include <atomic>
+
+snippet hatomic
+abbr atomic<>
+	std::atomic<${1:type}> ${2:atomicVar};
+	//atomics are move-only types! object containing them can no longer be copied
+
+snippet imutex
+abbr include mutex
+	#include <mutex>
+
+snippet mutex
+	std::mutex ${1:mtx};
+	mtx.lock();
+	//do stuff
+	mtx.unlock();
+
+
+snippet hmutex
+abbr help mutex
+	std::mutex ${1:mtx};
+	//mutex must be accessible by all threads, can't be local to the function *doing stuff*
+	// use lock_guards to avoid deadlocks!
+	mtx.lock();
+	//*do stuff*
+	mtx.unlock();
+
+snippet lock_guard
+	lock_guard<${3:mutex}> ${2:lg}(${1:mtx});
+
+
+snippet lock_guardFull
+	mutex m;
+	lock_guard<mutex> g(m);
+
+snippet hlock_guard
+	lock_guard<mutex> g(m);
+	//...
+	private
+	mutable mutex m; //only move'able - object containing it 
+					//can no longer be copied
+
+snippet ilock_guard
+abbr include lock_guard
+	#include <thread>
+	#include <mutex>
+
+snippet condition_variable
+abbr multithread condition variable
+alias condvar
+	condition_variable cond;
+
+snippet hcondition_variable
+abbr help multithread condition variable
+alias hcondvar
+	condition_variable cond;
+	mutex mtx;
+	queue<int> q;
+	//thread1
+	lock_guard<mutex> lg(mtx);
+	q.push(1);
+	cond.notify_one(); // send notification in one thread
+	//thread2
+	unique_lock<mutex> ul(mtx);
+	cond.wait(ul, [] { return !q.empty(); }); // wait for notification in another thread
+	int a = q.front();
+	q.pop();
+	
+
+snippet icondition_variable
+abbr include condition_variable
+abbr icondvar
+	#include <condition_variable>
+
+
+snippet future
+abbr future<type> var
+	future<${1:type}> ${2:var} = async(launch::async, ${3:functionName});
+
+
+snippet ifuture
+abbr include future
+	#include <future>
+
+
+snippet ascync
+abbr  async(launch::async, ...)
+	async( ${1:functionName});
+	async(launch::async, ${1:functionName}); //if asynch is essential
+	async(launch::deffered, ${1:functionName});
+
+
+snippet call_once
+abbr call_once(flag, function)
+	std::once_flag flag; // move somewhere
+	std::call_once(flag, [](){ ${1://code};});
+snippet icall_once
+abbr include call_once
+	#include <mutex>
+
+snippet hcall_once
+abbr help call_once(flag, function)
+	std::once_flag flag; // must exist long enough to block mutiple calls of call_once
+	
+	void do_once()
+	{
+	std::call_once(flag, [](){ std::cout << "Called once" << std::endl; });
+	}
+
+
+#########################
+#      OTHER
+#########################
+
+snippet pimplClass
+abbr private implementation class
+	//header
+	class PimplClass
+	{
+	public:
+	    PimplClass();
+	    ~PimplClass();
+	    PimplClass(PimplClass&&);
+	    PimplClass& operator=(PimplClass&&);
+	    PimplClass(const PimplClass&);
+	    PimplClass& operator=(const PimplClass&);
+	private:
+	    struct Impl;
+	    std::unique_ptr<Impl> pImpl;
+	};
+
+	//source
+
+	struct PimplClass::Impl
+	{
+	    std::string name;
+	};
+
+	PimplClass::PimplClass()
+	 :pImpl(std::unique_ptr<Impl>(new Impl))
+	{
+	}
+	PimplClass::~PimplClass() = default;
+	PimplClass::PimplClass(PimplClass&&) = default;
+	PimplClass& PimplClass::operator=(PimplClass&&) = default;
+	PimplClass::PimplClass(const PimplClass& rhs) : pImpl(std::unique_ptr<Impl>(new Impl(*rhs.pImpl)))
+	{
+	}
+	PimplClass& PimplClass::operator=(const PimplClass& rhs)
+	{
+	    *pImpl = *rhs.pImpl;
+	    return *this;
+	}

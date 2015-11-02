@@ -1,0 +1,28 @@
+snippet    start
+abbr       startuml
+	@startuml
+
+snippet    end 
+abbr       enduml
+	@enduml
+
+snippet    startDef
+abbr       startuml
+	@startuml
+	skinparam monochrome true
+	${1:}
+	@enduml
+
+
+snippet    participant 
+abbr       participant "Long" as short 
+	participant "${1:LongName}" as ${2:short}
+
+snippet    timer
+abbr       timer wait x
+	sprite $timer [16x23/8z] {
+	VL315i0W2D8K__-JnqQkrc4SJ59uKTONUN3tmd0XAzmCO7aG6BRpd7nChewgoGiwikLgvi9e8yUz4QZsSIgnA6TLQ1S9E5xhU0pVY_Pd68sJvYmfYu3XJehK
+	-x32Ayylv_zi23l_3mU_0000
+	}
+	${1:component} -> $1 : <$timer> wait ${2:1s}
+

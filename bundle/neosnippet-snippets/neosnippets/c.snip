@@ -29,9 +29,9 @@ abbr		if () {} else {}
 
 snippet	 for_old
 abbr		for () {}
-	for (${1} = 0; $1 < ${2}; $1++)
+	for (${1:int} ${2:i} = 0; $2 < ${3:10}; $2++)
 	{
-		${0:TARGET}
+		${4://code}
 	}
 
 snippet	 while
