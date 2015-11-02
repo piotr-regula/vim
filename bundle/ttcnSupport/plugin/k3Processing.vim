@@ -92,12 +92,20 @@ fun! K3RrcReconf()
     call OpenRrcReconfInNewWindow()
 endfun
 
-fun! OpenRrcReconfInNewWindow()
+fun! CopyRrcReconfToRegiserZ()
     let @z=""
     let copyAllRrcReconfToRegisterZ = '%g/rrcConnectionReconfiguration:=\n/normal! Vj%"Zy'
     exec copyAllRrcReconfToRegisterZ
-    exec PrepareBuffer("RrcReconf")
+endfun
+
+fun! PasteContentFromRegisterZ()
     exec 'normal! "zp'
+endfun
+
+fun! OpenRrcReconfInNewWindow()
+    call CopyRrcReconfToRegiserZ()
+    exec PrepareBuffer("RrcReconf")
+    call PasteContentFromRegisterZ()
 endfun
 
 command! -nargs=0 K3Filt call K3Filt()
