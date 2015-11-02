@@ -15,13 +15,13 @@ fun! LogFiltComponent(...)
     exec 'nohlsearch'
 endfun
 
-fun! LogFiltThread()
-    let l:currentPath = expand('%:p')
+fun! LogFiltId()
+    let l:currentPath = expand('%:p:gs/ /\\ /')
     let l:id = expand('<cword>')
-    call GenerateThreadFilter(l:currentPath, l:id)
+    call GenerateIdFilter(l:currentPath, l:id)
 endfun
 
-fun! GenerateThreadFilter(sourceFilePath, id)
+fun! GenerateIdFilter(sourceFilePath, id)
     let l:bufName = "Thread-" . a:id . ".LOG"
     split `=l:bufName`
     setlocal buftype=nofile

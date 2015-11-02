@@ -1,2 +1,2 @@
-au BufNewFile,BufRead *.LOG,*.out  setf outfile
+au BufNewFile,BufRead *.LOG,*.out,*.log  setf outfile
 
