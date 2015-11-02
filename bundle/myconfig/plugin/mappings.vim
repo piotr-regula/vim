@@ -71,8 +71,8 @@ vnoremap > >gv
 "move screen to word in search mode
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
+nnoremap <silent> * /<c-r><c-w><Home>\C<cr>zz
+nnoremap <silent> # ?\C<c-r><c-w><cr>zz
 nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
 
@@ -174,7 +174,8 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>
 vnoremap <Leader>s "sy:%s/<C-r>=substitute(@s,"\n", '\\n', 'g')<CR>/
 " sort lines by their length
 vnoremap <Leader>sl :!awk '{ print length, $0 }' \| sort -n \| awk '{$1=""; print $0}'<CR> 
-
+"save file as sudo
+cnoremap w!! w !sudo tee % > /dev/null
 "================================================================
 "                       FILES
 "================================================================
