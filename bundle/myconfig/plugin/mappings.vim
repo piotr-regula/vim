@@ -229,3 +229,11 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
 
+"uses manInfo
+nnoremap <C-h> :GenerateRegularManPage<CR>
+
+"dragVisuals
+vmap  <expr>  <S-LEFT>   DVB_Drag('left') 
+vmap  <expr>  <S-RIGHT>  DVB_Drag('right')
+vmap  <expr>  <S-DOWN>   DVB_Drag('down') 
+vmap  <expr>  <S-UP>     DVB_Drag('up')   
