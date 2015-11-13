@@ -71,10 +71,16 @@ vnoremap > >gv
 "move screen to word in search mode
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
-nnoremap <silent> * /<c-r><c-w><Home>\C<cr>zz
+"add case sensitivity to * by default
+nnoremap <silent> * /\C<c-r><c-w><cr>zz
 nnoremap <silent> # ?\C<c-r><c-w><cr>zz
+"search for selected text (including multiple words)
+vnoremap <silent> * "py/\C<c-r>p<Home>\C<cr>zz
+vnoremap <silent> # "py?\C<c-r>p<Home>\C<cr>zz
+
 nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
+
 
 "search for the next/previous selection
 vmap * "sy/<C-R>=substitute(@s,"\n", '\\n', 'g')<CR><CR>

@@ -46,3 +46,4 @@ function CreateTags()
     let curNodePath = g:NERDTreeFileNode.GetSelected().path.str()
     exec ':!ctags -R -f ' . curNodePath . '/tags ' . curNodePath
 endfunction
+
