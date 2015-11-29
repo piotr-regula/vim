@@ -32,7 +32,8 @@ set completeopt=longest,menuone "select longest common text from matches, show m
 let $PAGER=''
 "blink closing tag in insert mode
 set showmatch
-
+"match angle brackets
+set matchpairs+=<:>
 "==========================
 "   visual configuration
 "==========================
