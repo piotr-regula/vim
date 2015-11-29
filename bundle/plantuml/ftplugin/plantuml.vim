@@ -20,3 +20,4 @@ let b:makecommand=b:plantuml_executable_script." ".b:path
 " define a sensible makeprg for plantuml files
 autocmd Filetype plantuml let &l:makeprg=b:makecommand
 
+nnoremap <buffer> <C-h> :silent !firefox http://plantuml.com/sequence.html&<CR>
