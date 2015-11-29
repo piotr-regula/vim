@@ -46,7 +46,7 @@ imap <f10> <esc><f10>a
 nnoremap <silent> <F11> :VCSBlame<CR>:set filetype=cpp<CR>
 imap <f11> <esc><f11>a
 "clear search highlights
-nnoremap <silent><f12> :noh<cr>
+nnoremap <silent><f12> :noh<cr>:match none<cr>
 imap <f12> <ESC><f12>
 
 
@@ -129,6 +129,8 @@ onoremap in[ :<c-u>normal! f[vi[<cr>
 onoremap in{ :<c-u>normal! f{vi{<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 
+"paste from clipboard
+nnoremap <leader>p "+gP
 
 "================================================================
 "                       VARIOUS MAPPINGS
@@ -237,3 +239,5 @@ vmap  <expr>  <S-LEFT>   DVB_Drag('left')
 vmap  <expr>  <S-RIGHT>  DVB_Drag('right')
 vmap  <expr>  <S-DOWN>   DVB_Drag('down') 
 vmap  <expr>  <S-UP>     DVB_Drag('up')   
+
+nnoremap <C-space> :HighlightWordUnderCursorToggle<cr>

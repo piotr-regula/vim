@@ -47,3 +47,13 @@ function CreateTags()
     exec ':!ctags -R -f ' . curNodePath . '/tags ' . curNodePath
 endfunction
 
+fun! HighlightWordUnderCursorToggle()
+    if exists("g:enableWordUnderCursorHighlighting") && g:enableWordUnderCursorHighlighting
+      let g:enableWordUnderCursorHighlighting = 0
+      exe "match none"
+    else
+      let g:enableWordUnderCursorHighlighting = 1
+    endif
+endfun
+
+command! -nargs=0 HighlightWordUnderCursorToggle call HighlightWordUnderCursorToggle()
