@@ -45,6 +45,7 @@ syn keyword ttcnOper    getverdict
 "
 " Statements
 syn keyword ttcnCond    if else
+syn keyword ttcnCase    case select
 syn keyword ttcnRepeat  for while do repeat
 syn keyword ttcnStat    log stop alt interleave deactivate connect
 syn keyword ttcnStat    disconnect map unmap start done send call reply
@@ -53,12 +54,12 @@ syn keyword ttcnStat    timeout setverdict
 syn keyword ttcnStat    action execute return goto
 syn keyword ttcnLabel   label
 syn keyword ttcnExcept  raise catch
-"syn match   ttcnstat    "->"
-"syn match   ttcnStat    ":="
+syn match   ttcnstat    "->"
+syn match   ttcnStat    ":="
 syn keyword ttcnContr   control
 syn keyword ttcnStat    function testcase signature noblock exception
 syn keyword ttcnStat    altstep template
-"syn match   ttcnStat    "\<runs\s\+on\>"
+syn match   ttcnStat    "\<runs\s\+on\>"
 
 " Predefined functions
 syn keyword ttcnFunc    int2char int2unichar int2bit int2hex int2oct
@@ -67,6 +68,12 @@ syn keyword ttcnFunc    bit2int bit2hex bit2oct bit2str hex2int hex2bit
 syn keyword ttcnFunc    hex2oct hex2str oct2int oct2bit oct2str str2int
 syn keyword ttcnFunc    str2oct lengthof sizeof ispresent ischosen regexp
 syn keyword ttcnFunc    substr rnd
+
+"functions
+syn match ttcnFunc      "[^ ({]\+\ze("
+"templates
+syn match ttcnAttrib     "\<a_[^ ()+-,:;=!]\+\>"
+
 
 " Various keywords
 syn keyword ttcnKeyw    in out inout any all sender to value modifies
@@ -106,6 +113,7 @@ if version >= 508 || !exists("g:did_ttcn_syn_inits")
   endif
 
   HiLink ttcnAttrib PreProc
+  HiLink ttcnCase   PreProc
   HiLink ttcnBool   Boolean
   HiLink ttcnConst  Constant
   HiLink ttcnCmnt   Comment
