@@ -180,6 +180,14 @@ snippet henable_if_t
 						   > //decay removes const volatile reference etc from T
 
 
+snippet icopy_if
+abbr include copy_if
+	#include <algorithm>
+
+
+snippet copy_if
+	copy_if(std::begin(${1:container}), std::end($1), std::back_inserter(${2:resultContainer}), [](const decltype($1)::value_type& p_elem){ return ${3:p_elem%2==0};});
+
 #########################
 # BOOST Snippets
 #########################
@@ -240,7 +248,7 @@ snippet TestWithParam
 	        flag1(boost::get<0>(GetParam())),
 	        flag2(boost::get<1>(GetParam())) {}
 	
-	TEST_P(RscBlockedByOtherMeasurementsCheckerTestSuite, testRscBlockedByOtherMeasurements)
+	TEST_P(TestSuite, test)
 	{
 	}
 
