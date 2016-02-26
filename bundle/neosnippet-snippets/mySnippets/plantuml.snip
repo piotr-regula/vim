@@ -26,3 +26,23 @@ abbr       timer wait x
 	}
 	${1:component} -> $1 : <$timer> wait ${2:1s}
 
+
+snippet    startDef2
+abbr       startuml2
+	@startuml
+	skinparam monochrome true
+	skinparam backgroundColor transparent
+	skinparam classBackgroundColor transparent
+	skinparam style strictuml
+	skinparam sequenceArrowFontSize 11
+	skinparam sequenceGroupFontSize 11
+	skinparam sequenceParticipantFontSize 11
+	skinparam sequenceTitleFontSize 11
+	skinparam noteFontSize 10
+	skinparam sequenceDividerFontSize 10
+	
+	autonumber 10 10 "<b>[000]"
+	${1:}
+	@enduml
+
+
