@@ -16,20 +16,20 @@
 "================================================================
 
 "direxplorer
-nnoremap <silent><f1> :Sexplore<cr>
+nnoremap <silent><f1> :Sexplore<CR>
 imap <f1> <esc><f1>a
 "quit
 nnoremap <silent><F2> :q<CR>
 imap <F2> <ESC><f2>a
-"splits
-nnoremap <silent><F3> :set cursorline! cursorcolumn!<cr>
+"BookmarkerOpenBookmarks
+nnoremap <silent><F3> :BookmarkerOpenBookmarks<CR>
 imap <F3> <ESC><f3>a
 "buffers
 nnoremap <silent><F4> :CtrlP<CR>
 imap <F4> <ESC><F4>a
 "FilesTree
- nmap <silent><F5> i<Esc>:NERDTreeToggle<CR>
- imap <F5> <ESC><F5>a
+nnoremap <silent><F5> :NERDTreeToggle<CR>
+imap <F5> <ESC><F5>
 "Creating tabs
 nnoremap <silent><F6> :tab split<CR>
 imap <F6> <ESC><F6>a
@@ -37,16 +37,16 @@ imap <F6> <ESC><F6>a
 nnoremap <silent> <F7> :Rgrep<CR>
 imap <F7> <esc><f7>a
 "Temporary buffer
-nnoremap <silent><f9> :Sscratch<cr>
+nnoremap <silent><f9> :Sscratch<CR>
 imap <f9> <esc><f9>a
 "TagList
 nnoremap <silent> <F10> :TlistToggle<CR>
 imap <f10> <esc><f10>a
 "Svn Blame
-nnoremap <silent> <F11> :VCSBlame<CR>:set filetype=cpp<CR>
+nnoremap <silent> <F11> :VCSBlame<CR>:set filetype=gitannotate<CR>
 imap <f11> <esc><f11>a
 "clear search highlights
-nnoremap <silent><f12> :noh<cr>:match none<cr>
+nnoremap <silent><f12> :noh<CR>:match none<CR>
 imap <f12> <ESC><f12>
 
 
@@ -72,11 +72,11 @@ vnoremap > >gv
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 "add case sensitivity to * by default
-nnoremap <silent> * /\C<c-r><c-w><cr>zz
-nnoremap <silent> # ?\C<c-r><c-w><cr>zz
+nnoremap <silent> * /\C<c-r><c-w><CR>zz
+nnoremap <silent> # ?\C<c-r><c-w><CR>zz
 "search for selected text (including multiple words)
-vnoremap <silent> * "py/\C<c-r>p<Home>\C<cr>zz
-vnoremap <silent> # "py?\C<c-r>p<Home>\C<cr>zz
+vnoremap <silent> * "py/\C<c-r>p<Home>\C<CR>zz
+vnoremap <silent> # "py?\C<c-r>p<Home>\C<CR>zz
 
 nnoremap <silent> g* g*zz
 nnoremap <silent> g# g#zz
@@ -124,10 +124,10 @@ if bufwinnr(1)
 endif
 
 " operation in brackets/" for other cursor positions
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap in[ :<c-u>normal! f[vi[<cr>
-onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap in" :<c-u>normal! f"vi"<cr>
+onoremap in( :<c-u>normal! f(vi(<CR>
+onoremap in[ :<c-u>normal! f[vi[<CR>
+onoremap in{ :<c-u>normal! f{vi{<CR>
+onoremap in" :<c-u>normal! f"vi"<CR>
 
 "paste from clipboard
 nnoremap <leader>p "+gP
@@ -175,27 +175,28 @@ nmap <leader>inh :Regrep<CR><Home>(public\|private\|protected).*<CR>
 "search object construction
 nmap <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
 "source vim
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 " change word under cursor: ,s
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>
 " change selection (converting multiline ^n characters to \n)
 vnoremap <Leader>s "sy:%s/<C-r>=substitute(@s,"\n", '\\n', 'g')<CR>/
 " sort lines by their length
 vnoremap <Leader>sl :!awk '{ print length, $0 }' \| sort -n \| awk '{$1=""; print $0}'<CR> 
+" toggle crosshair
+nnoremap <Leader>cross :set cursorline! cursorcolumn!<CR>
 "save file as sudo
 cnoremap w!! w !sudo tee % > /dev/null
 "================================================================
 "                       FILES
 "================================================================
 
-nmap <silent> <leader>vimrc     <f6>:e ~/.vimrc<cr>
-nmap <silent> <leader>map     <f6>:e ~/.vim/bundle/myconfig/plugin/mappings.vim<cr>
-nmap <silent> <leader>my     <f6>:e ~/.vim/bundle/myconfig/plugin/<cr>
-nmap <silent> <leader>plug     <f6>:e ~/.vim/bundle/<cr>
-nmap <silent> <leader>ttcn      <f6>:e ~/.vim/bundle/snipmate/snippets/ttcn.snippets<cr>:set nofoldenable<cr>
-nmap <silent> <leader>c      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/cpp.snip<cr>
-nmap <silent> <leader>snip      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/<cr>
-nmap <silent> <leader>notes      <f6>:e ~/.vim/.notes<cr>:set nofoldenable<cr>
+nmap <silent> <leader>vimrc     <f6>:e ~/.vimrc<CR>
+nmap <silent> <leader>map     <f6>:e ~/.vim/bundle/myconfig/plugin/mappings.vim<CR>
+nmap <silent> <leader>my     <f6>:e ~/.vim/bundle/myconfig/plugin/<CR>
+nmap <silent> <leader>plug     <f6>:e ~/.vim/bundle/<CR>
+nmap <silent> <leader>csnip      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/cpp.snip<CR>
+nmap <silent> <leader>snip      <f6>:e ~/.vim/bundle/neosnippet-snippets/neosnippets/<CR>
+nmap <silent> <leader>notes      <f6>:e ~/.vim/.notes<CR>:set nofoldenable<CR>
 
 "================================================================
 "                       PLUGIN MAPPINGS
@@ -209,15 +210,15 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 "Scratch buffers
-nnoremap <Leader>1 :Sscratch1<cr>
-nnoremap <Leader>2 :Sscratch2<cr>
-nnoremap <Leader>3 :Sscratch3<cr>
-nnoremap <Leader>4 :Sscratch4<cr>
-nnoremap <Leader>5 :Sscratch5<cr>
-nnoremap <Leader>6 :Sscratch6<cr>
+nnoremap <Leader>1 :Sscratch1<CR>
+nnoremap <Leader>2 :Sscratch2<CR>
+nnoremap <Leader>3 :Sscratch3<CR>
+nnoremap <Leader>4 :Sscratch4<CR>
+nnoremap <Leader>5 :Sscratch5<CR>
+nnoremap <Leader>6 :Sscratch6<CR>
 
 "add header (uses snippet completion)
-nmap <leader>header iheader<C-Tab><ESC>ki#pragma once<ESC>Go<ESC>
+nmap <leader>header iaheader<C-Tab>
 
 "neosnippets
 " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -240,4 +241,4 @@ vmap  <expr>  <S-RIGHT>  DVB_Drag('right')
 vmap  <expr>  <S-DOWN>   DVB_Drag('down') 
 vmap  <expr>  <S-UP>     DVB_Drag('up')   
 
-nnoremap <C-space> :HighlightWordUnderCursorToggle<cr>
+nnoremap <C-space> :HighlightWordUnderCursorToggle<CR>
