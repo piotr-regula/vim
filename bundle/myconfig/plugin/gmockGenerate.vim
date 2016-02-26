@@ -1,6 +1,6 @@
 let s:hppFileMatcher = '\v.*\.hpp'
 
-fun! GmockGen()
+fun! GmockGen(regularPath)
     let l:currentPath = expand('%:p')
     let l:currentFileName = expand('%:t')
     if !IsHppFile(l:currentPath)
@@ -8,7 +8,12 @@ fun! GmockGen()
         return
     endif
     echom l:currentPath
-    let l:targetPath = CreateMockPath(l:currentPath)
+    let l:targetPath = ''
+    if a:regularPath == 0
+        let l:targetPath = CreateMockPath(l:currentPath)
+    else
+        let l:targetPath = CreateMockRegularPath(l:currentPath)
+    endif
     call GenerateMockInSplit(l:targetPath, l:currentPath)
     call FormatFileAndAddIncludes(l:currentFileName)
 endfun
@@ -18,6 +23,10 @@ fun! IsHppFile(filename)
 endfun
 
 fun! CreateMockPath(hppFilePath)
+    return substitute(a:hppFilePath,'Include\(.*\)\.hpp','Test_modules/Mocks\1Mock.hpp',"")
+endfun
+
+fun! CreateMockRegularPath(hppFilePath)
     return substitute(a:hppFilePath,'Include\(.*\)\.hpp','Test_modules\1Mock.hpp',"")
 endfun
 
@@ -45,5 +54,6 @@ fun! GenerateMockInSplit(mockPath, currentPath)
     exec 'silent .!' . g:gmockGenCmd . " " . a:currentPath
 endfun
 
-command! -nargs=0 GmockGen call GmockGen()
+command! -nargs=0 GmockGen call GmockGen(0)
+command! -nargs=0 GmockGenRegular call GmockGen(1)
 
