@@ -7,6 +7,7 @@ syntax match BookmarkerIndex "\[\zs\d\+\ze\]"
 
 hi link BookmarkerPath Statement 
 hi link BookmarkerIndex Number 
+
 setlocal conceallevel=2
 hi clear Conceal
 
