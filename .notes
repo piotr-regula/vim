@@ -2,7 +2,8 @@ bookmarks
 python from sys import argv
 python print "" % a
 gmockGen remove I (and move to Mocks subdirectory)
+gmockGen fix for c++11 (=default)
 class interface test snippets
 switchoocase break snippets
 move
-
+create default hpp/cpp/mock/testsuite
