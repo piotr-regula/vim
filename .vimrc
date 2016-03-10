@@ -50,7 +50,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set linespace =-2  "fix for white borders
 set laststatus=2 "always display statusline
-
+hi clear Conceal "clear conceal background
 "==========================
 "       plugins
 "==========================

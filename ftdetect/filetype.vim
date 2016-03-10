@@ -32,3 +32,4 @@ au BufNewFile,BufRead *.notes  setf notes
 
 au BufNewFile,BufRead *.pu,*.plantuml  setf plantuml
 
+
