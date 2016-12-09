@@ -22,7 +22,7 @@ fun! LogFiltId()
 endfun
 
 fun! GenerateIdFilter(sourceFilePath, id)
-    let l:bufName = "Thread-" . a:id . ".LOG"
+    let l:bufName = "__ID:" . a:id . ".LOG"
     split `=l:bufName`
     setlocal buftype=nofile
     exec 'silent! .!grep "ThreadID:[^]]*' . a:id . '" ' . a:sourceFilePath
@@ -42,7 +42,7 @@ endfun
 
 command! -nargs=? LogFilt call LogFilt('<f-args>')
 command! -nargs=? LogFiltComponent call LogFiltComponent('<f-args>')
-command! -nargs=0 LogFiltThread call LogFiltThread()
+command! -nargs=0 LogFiltId call LogFiltId()
 command! -nargs=0 LogFiltError call LogFiltError()
 command! -nargs=0 LogSort call LogSort()
 
