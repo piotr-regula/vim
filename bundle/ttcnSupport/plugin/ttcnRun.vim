@@ -7,6 +7,7 @@ endfun
 
 fun! ChangeDirectoryIfPathProvided()
     if !empty(g:ttcnRootPath)
+        echom "entering " . g:ttcnRootPath
         cd `=g:ttcnRootPath`
     endif
 endfun
@@ -23,9 +24,34 @@ fun! GetTestcaseName()
     return l:testcaseName
 endfun
 
+fun! TestRunFinishHandler(channel) 
+    if !empty(g:notifyCommand)
+        exec g:notifyCommand
+    endif
+    exec "cfile! " . g:backgroundCommandOutput
+    exec "cclose"
+    copen
+endfun
+
+fun! TestRunOutHandler(channel, message)
+    echo a:message
+endfun
+
+fun! IsAsyncSupported()
+    return v:version >= 800
+endfun
+
 fun! RunTestcase(componentName, testcaseName)
-    exec "make! ". g:ttcnComponentFlag . a:componentName . " " 
-        \ . g:ttcnTestcaseFlag . a:testcaseName . " " . g:ttcnMakeOpts "| copen"
+    let l:ttcnRunCommand = g:ttcnMakeCmd  . " " . g:ttcnComponentFlag . a:componentName . " " 
+        \ . g:ttcnTestcaseFlag . a:testcaseName . " " . g:ttcnMakeOpts
+    if IsAsyncSupported()
+        let g:backgroundCommandOutput = tempname()
+        let job = job_start(split(l:ttcnRunCommand), {'close_cb': 'TestRunFinishHandler', 'out_io': 'file', 'out_name': g:backgroundCommandOutput,
+        \                   'callback' : 'TestRunOutHandler'})
+    else
+        exec l:ttcnRunCommand
+    endif
+
 endfun
 
 fun! RunCurrentTestcase()

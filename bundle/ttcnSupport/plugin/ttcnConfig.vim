@@ -17,3 +17,7 @@ endif
 if !exists('g:ttcnRootPath')
     let g:ttcnRootPath=''
 endif
+
+if !exists('g:notifyCommand')
+    let g:notifyCommand=''
+endif
