@@ -132,13 +132,16 @@ onoremap in" :<c-u>normal! f"vi"<CR>
 "paste from clipboard
 nnoremap <leader>p "+gP
 
+"assign selection register to unnamed register
+nnoremap <leader>pp :let @"=@*<cr>
+
 "================================================================
 "                       VARIOUS MAPPINGS
 "================================================================
 
 " These work like * and g*, but do not move the cursor and always set hls.
-map <Leader>* :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
-map <Leader>g* :let @/ = expand('<cword>')\|set hlsearch<C-M>
+map <leader>* :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+map <leader>g* :let @/ = expand('<cword>')\|set hlsearch<C-M>
 "clear search
 nmap <silent> <leader>/ :nohlsearch<CR>
 nmap <silent> <leader>hpp  :call OpenHeader()<CR>
@@ -154,8 +157,8 @@ nmap <silent> <leader>spaces / \+$<CR>
 "show menu bar
 nmap <silent> <leader>menu  :set guioptions+=m<CR>
 "copy path buffer to register
-nmap <Leader>ff :let @"=expand("%:p")<CR>:let @*=expand("%:p")<CR>
-nmap <Leader>fd :let @"=expand("%:t")<CR>:let @*=expand("%:t")<CR>
+nmap <leader>ff :let @"=expand("%:p")<CR>:let @*=expand("%:p")<CR>
+nmap <leader>fd :let @"=expand("%:t")<CR>:let @*=expand("%:t")<CR>
 "pastemode
 nmap <leader>paste :set paste!<CR>
 "find merge conflicts
@@ -173,19 +176,21 @@ nmap <leader>pu :make<CR>:let @"=expand("%:r")<CR>:!eog<space><C-R>".png&<CR><CR
 "search object inheritance
 nmap <leader>inh :Regrep<CR><Home>(public\|private\|protected).*<CR>
 "search object construction
-nmap <leader>con :Regrep<CR><End>(\(\|>[ ]*\()<CR>
+nmap <leader>con :Regrep<CR><Home>\<<End>\>(\(\|>[ ]*\()<CR>
 "source vim
 nnoremap <leader>sv :source $MYVIMRC<CR>
 " change word under cursor: ,s
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>
 " change selection (converting multiline ^n characters to \n)
-vnoremap <Leader>s "sy:%s/<C-r>=substitute(@s,"\n", '\\n', 'g')<CR>/
+vnoremap <leader>s "sy:%s/<C-r>=substitute(@s,"\n", '\\n', 'g')<CR>/
 " sort lines by their length
-vnoremap <Leader>sl :!awk '{ print length, $0 }' \| sort -n \| awk '{$1=""; print $0}'<CR> 
+vnoremap <leader>sl :!awk '{ print length, $0 }' \| sort -n \| awk '{$1=""; print $0}'<CR> 
 " toggle crosshair
-nnoremap <Leader>cross :set cursorline! cursorcolumn!<CR>
+nnoremap <leader>cross :set cursorline! cursorcolumn!<CR>
 "save file as sudo
 cnoremap w!! w !sudo tee % > /dev/null
+
+nnoremap <leader>ttcn iiaheader<c-]><esc>omodule<space><c-r>=expand("%:t:r")<cr><esc>"zyiwo{<cr>}//<space><esc>"zpO
 "================================================================
 "                       FILES
 "================================================================
@@ -242,3 +247,10 @@ vmap  <expr>  <S-DOWN>   DVB_Drag('down')
 vmap  <expr>  <S-UP>     DVB_Drag('up')   
 
 nnoremap <C-space> :HighlightWordUnderCursorToggle<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+vnoremap <Leader>cf :ClangFormat<CR>
