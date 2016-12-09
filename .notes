@@ -3,7 +3,6 @@ python from sys import argv
 python print "" % a
 update gmockGen to new version
 gmockgen remove I from beginning
-gmock gen fix silent on formating
 gmockGen fix for c++11 (=default)
 class interface test snippets
 switchoocase break snippets

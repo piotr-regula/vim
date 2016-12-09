@@ -36,8 +36,8 @@ fun! FormatFileAndAddIncludes(sourceFile)
 endfun
 
 fun! Format()
-    exec '%s/\( \)*{/\r{/g'
-    exec '%s/\vMock([^ ]*)/\1Mock/g'
+    exec 'silent %s/\( \)*{/\r{/g'
+    exec 'silent %s/\vMock([^ ]*)/\1Mock/g'
     exec 'normal! Go'
 endfun
 
