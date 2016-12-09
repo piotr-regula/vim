@@ -118,6 +118,9 @@ let g:gmockGenCmd = '~/devTools/generator/gmock_gen.py'
 "latexBox
 let g:LatexBox_split_type="new"
 
+"clang format
+let g:clang_format#command="clang-format-3.8"
+
 "startify
 let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
 let g:startify_files_number = 10
