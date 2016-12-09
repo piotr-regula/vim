@@ -30,6 +30,5 @@ au BufNewFile,BufRead *.gitignore setf cfg
 
 au BufNewFile,BufRead *.notes  setf notes
 
-au BufNewFile,BufRead *.pu,*.plantuml  setf plantuml
-
+au BufNewFile,BufRead *.pu,*.plantuml,*.puml  setf plantuml
 
