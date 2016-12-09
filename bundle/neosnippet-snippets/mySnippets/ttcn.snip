@@ -1,0 +1,19 @@
+snippet testcase
+	testcase ${1:COMPONENT}_${2:BTC}_${3:TestcaseName}()
+	runs on ${4:Component}TestComponentWithCcsStub
+	system $4SystemComponent
+	{
+		${5://code}
+	}
+
+snippet template
+	template ${1:Type} a_${2:name}(${3:param}) :=
+	{
+		${4://structure}
+	}
+
+snippet for
+	for(var integer ${1:i} := 0; $1 < ${2:lengthof(containter)}; $1 := $1 + 1)
+	{
+		${3://code}
+	}

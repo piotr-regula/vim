@@ -1,0 +1,19 @@
+snippet bash
+	#!/bin/bash
+	set -o nounset
+	set -o errexit
+
+snippet bash2
+	#!/bin/bash
+	set -o nounset
+	set -o errexit
+	function finish
+	{
+		${1:#cleanup code}
+	}
+	trap finish EXIT
+
+snippet ignore_failing_command
+ if ! ${1:<possible failing command>} ; then
+    echo "failure ignored"
+fi
