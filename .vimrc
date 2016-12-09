@@ -105,14 +105,18 @@ let g:neosnippet#snippets_directory=['~/.vim/bundle/neosnippet-snippets/neosnipp
 
 "ttcnSupport
 let g:ttcnRootPath = '~/lte/trunk/'
+let g:notifyCommand = '!~/devTools/devToolTeamRepo/notify.py TTCN3 Test finished' 
 
 "pythonSupport
-let g:pymode = 1
-let g:pymode_rope = 1
+let g:pymode = 0
+let g:pymode_rope = 0
 let g:pymode_folding = 0
 
 "myConfig
 let g:gmockGenCmd = '~/devTools/generator/gmock_gen.py'
+
+"latexBox
+let g:LatexBox_split_type="new"
 
 "startify
 let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
