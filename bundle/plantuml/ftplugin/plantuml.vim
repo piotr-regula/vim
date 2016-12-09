@@ -21,3 +21,5 @@ let b:makecommand=b:plantuml_executable_script." ".b:path
 autocmd Filetype plantuml let &l:makeprg=b:makecommand
 
 nnoremap <buffer> <C-h> :silent !firefox http://plantuml.com/sequence.html&<CR>
+
+nnoremap <buffer> <leader>pu :make<CR>:let @"=expand("%:r")<CR>:!eog<space>"<C-R>".png"&<CR><CR>
