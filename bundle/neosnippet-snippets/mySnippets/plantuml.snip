@@ -6,12 +6,6 @@ snippet    end
 abbr       enduml
 	@enduml
 
-snippet    startDef
-abbr       startuml
-	@startuml
-	skinparam monochrome true
-	${1:}
-	@enduml
 
 
 snippet    participant 
@@ -27,8 +21,8 @@ abbr       timer wait x
 	${1:component} -> $1 : <$timer> wait ${2:1s}
 
 
-snippet    startDef2
-abbr       startuml2
+snippet    startDef
+abbr       startuml
 	@startuml
 	skinparam monochrome true
 	skinparam backgroundColor transparent
@@ -45,4 +39,9 @@ abbr       startuml2
 	${1:}
 	@enduml
 
-
+snippet    startDef2
+abbr       startuml with no skinparam config
+	@startuml
+	skinparam monochrome true
+	${1:}
+	@enduml
