@@ -17,3 +17,18 @@ snippet for
 	{
 		${3://code}
 	}
+
+snippet struct
+	type record ${1:Name}
+	{
+		${2://structure}
+	}
+
+snippet using
+	type ${1:OldType} ${2:NewType}
+
+snippet listType
+	type record of ${1:ElemType} ${2:TypeName}
+
+snippet listTypeWithLength
+	type record length (${1:1} .. ${2:MAX}) of ${3:ElemType} ${4:TypeName}

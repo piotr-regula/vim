@@ -45,3 +45,19 @@ abbr       startuml with no skinparam config
 	skinparam monochrome true
 	${1:}
 	@enduml
+
+snippet style
+alias   skinparamDef
+abbr monochrome skinparam
+	skinparam monochrome true
+	skinparam backgroundColor transparent
+	skinparam classBackgroundColor transparent
+	skinparam style strictuml
+	skinparam sequenceArrowFontSize 11
+	skinparam sequenceGroupFontSize 11
+	skinparam sequenceParticipantFontSize 11
+	skinparam sequenceTitleFontSize 11
+	skinparam noteFontSize 10
+	skinparam sequenceDividerFontSize 10
+	
+	autonumber 10 10 "<b>[000]"
