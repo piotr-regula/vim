@@ -79,20 +79,6 @@ let g:mwDefaultHighlightingPalette = 'extended'
 let Grep_Skip_Files='*.bak, *.svn*, *.tmp*, *.swp, *.swo, *.rej, *.orig, *.swm'
 let Grep_Skip_Dirs = '.svn lteDo'
 
-"search for all files in ctrlp
-"let g:ctrlp_max_depth=100
-"let g:ctrlp_max_files=0
-let g:ctrlp_working_path_mode = ""
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --follow --depth 200 "speed up indexing
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .tmp
-      \ --ignore .swp
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-
 "keep multiple cursors
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
