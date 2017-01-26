@@ -61,3 +61,18 @@ abbr monochrome skinparam
 	skinparam sequenceDividerFontSize 10
 	
 	autonumber 10 10 "<b>[000]"
+
+
+snippet box 
+alias  box "Name" 
+	box "${1:Name}"
+	${2:}
+	end box
+
+snippet note
+alias note over X
+	note over ${1:X}
+	${2:}
+	end note
+
+
