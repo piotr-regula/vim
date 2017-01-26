@@ -56,6 +56,7 @@ imap <f12> <ESC><f12>
 
 " use tagselect by default
 nnoremap <C-]> g<C-]>
+vnoremap <C-]> g<C-]>
 nnoremap <C-W><C-]> <C-W>g<C-]>
 
 "Y = Yank from cursor till end of line
@@ -254,3 +255,4 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 vnoremap <Leader>cf :ClangFormat<CR>
+nnoremap <C-p> :FZF<CR>
