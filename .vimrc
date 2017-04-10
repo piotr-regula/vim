@@ -39,7 +39,7 @@ set matchpairs+=<:>
 "==========================
 
 syntax on
-colorscheme badwolf
+colorscheme darktooth
 set guifont=Monaco\ 11
 set ruler
 set nowrap
@@ -51,6 +51,7 @@ set guioptions-=r  "remove right-hand scroll bar
 set linespace =-2  "fix for white borders
 set laststatus=2 "always display statusline
 hi clear Conceal "clear conceal background
+
 "==========================
 "       plugins
 "==========================
@@ -91,7 +92,6 @@ let g:neosnippet#snippets_directory=['~/.vim/bundle/neosnippet-snippets/neosnipp
 
 "ttcnSupport
 let g:ttcnRootPath = '~/lte/trunk/'
-let g:notifyCommand = '!~/devTools/devToolTeamRepo/notify.py TTCN3 Test finished' 
 
 "pythonSupport
 let g:pymode = 0
