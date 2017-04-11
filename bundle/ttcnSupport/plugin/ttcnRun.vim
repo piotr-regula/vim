@@ -1,5 +1,6 @@
 let s:testcaseMatcher='\v[A-Z]+_.*'
 
+
 fun! GetComponentNameFromTestase(testcaseName)
     let l:testcaseName = a:testcaseName
     return split(l:testcaseName,'_')[0]
@@ -25,8 +26,8 @@ fun! GetTestcaseName()
 endfun
 
 fun! TestRunFinishHandler(channel) 
-    if !empty(g:notifyCommand)
-        exec g:notifyCommand
+    if !empty(g:ttcnNotifyCommand)
+        exec g:ttcnNotifyCommand
     endif
     exec "cfile! " . g:backgroundCommandOutput
     exec "cclose"
@@ -45,14 +46,22 @@ fun! RunTestcase(componentName, testcaseName)
     let l:ttcnRunCommand = g:ttcnMakeCmd  . " " . g:ttcnComponentFlag . a:componentName . " " 
         \ . g:ttcnTestcaseFlag . a:testcaseName . " " . g:ttcnMakeOpts
     if IsAsyncSupported()
-        let g:backgroundCommandOutput = tempname()
-        let job = job_start(split(l:ttcnRunCommand), {'close_cb': 'TestRunFinishHandler', 'out_io': 'file', 'out_name': g:backgroundCommandOutput,
-        \                   'callback' : 'TestRunOutHandler'})
+        call RunTestcaseInAsync(l:ttcnRunCommand)
     else
         exec l:ttcnRunCommand
     endif
-
 endfun
+
+fun! RunTestcaseInAsync(ttcnRunCommand)
+    if !empty(g:asyncRunCommand)
+        exec g:asyncRunCommand . " " . a:ttcnRunCommand
+        exec "copen"
+    else
+        let g:backgroundCommandOutput = tempname()
+        let job = job_start(split(a:ttcnRunCommand), {'close_cb': 'TestRunFinishHandler', 'out_io': 'file', 'out_name': g:backgroundCommandOutput,
+        \                   'callback' : 'TestRunOutHandler'})
+    endif
+endfun 
 
 fun! RunCurrentTestcase()
     let l:testcaseName = GetTestcaseName()

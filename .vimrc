@@ -92,6 +92,7 @@ let g:neosnippet#snippets_directory=['~/.vim/bundle/neosnippet-snippets/neosnipp
 
 "ttcnSupport
 let g:ttcnRootPath = '~/lte/trunk/'
+let g:asyncRunCommand='AsyncRun'
 
 "pythonSupport
 let g:pymode = 0
