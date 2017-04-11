@@ -26,7 +26,7 @@ syn keyword cppSTL		abort abs accumulate acos adjacent_difference adjacent_find 
 syn match Placeholders		"\<_[1-9]\>"
 syn match ErrorMsg		"^#include.*cpp"
 
-syn keyword cppTest	TEST_F EXPECT_CALL ON_CALL EXPECT_TRUE ASSERT_TRUE ASSERT_THAT NiceMock StrictMock EXPECT_EQ
+syn keyword cppTest	TEST_F EXPECT_CALL ON_CALL EXPECT_TRUE EXPECT_FALSE ASSERT_TRUE ASSERT_FALSE ASSERT_THAT NiceMock StrictMock EXPECT_EQ
 syn match cppTest "\<Times\>"
 syn match cppTest	"\(MOCK_METHOD\|MOCK_CONST_METHOD\)[1-9]"
 syn match cppTest	"MATCHER_P[1-9]"
