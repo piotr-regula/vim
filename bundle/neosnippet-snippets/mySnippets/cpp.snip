@@ -117,6 +117,7 @@ snippet make_pair
 	std::make_pair(${1:param1}, ${2:param2})
 
 snippet ituple
+alias   itie ignore
 abbr    include tuple
 	#include <tuple>
 
@@ -134,6 +135,13 @@ snippet htuple
 	$3 var2;
 	std::tie(var1, var2) = $4;
 	std::tie(std::ignore, var2) = $4;
+
+snippet tie
+	std::tie(${1:var1}, ${2:var2})
+
+snippet ignore 
+abbr std::ignore
+	std::ignore
 
 snippet ifunction
 abbr    include function
