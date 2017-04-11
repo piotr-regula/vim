@@ -8,3 +8,4 @@ class interface test snippets
 switchoocase break snippets
 move
 create default hpp/cpp/mock/testsuite
+gmockGen to include componentspecific google mock
