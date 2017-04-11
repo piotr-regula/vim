@@ -24,9 +24,6 @@ imap <F2> <ESC><f2>a
 "BookmarkerOpenBookmarks
 nnoremap <silent><F3> :BookmarkerOpenBookmarks<CR>
 imap <F3> <ESC><f3>a
-"buffers
-nnoremap <silent><F4> :CtrlP<CR>
-imap <F4> <ESC><F4>a
 "FilesTree
 nnoremap <silent><F5> :NERDTreeToggle<CR>
 imap <F5> <ESC><F5>
@@ -39,9 +36,6 @@ imap <F7> <esc><f7>a
 "Temporary buffer
 nnoremap <silent><f9> :Sscratch<CR>
 imap <f9> <esc><f9>a
-"TagList
-nnoremap <silent> <F10> :TlistToggle<CR>
-imap <f10> <esc><f10>a
 "Svn Blame
 nnoremap <silent> <F11> :VCSBlame<CR>:set filetype=gitannotate<CR>
 imap <f11> <esc><f11>a
@@ -256,3 +250,7 @@ nmap ga <Plug>(EasyAlign)
 
 vnoremap <Leader>cf :ClangFormat<CR>
 nnoremap <C-p> :FZF<CR>
+
+"fzf buffer lines fuzzy search
+nnoremap <leader>b :BLines<CR>
+
