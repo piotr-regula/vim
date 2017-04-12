@@ -24,6 +24,9 @@ imap <F2> <ESC><f2>a
 "BookmarkerOpenBookmarks
 nnoremap <silent><F3> :BookmarkerOpenBookmarks<CR>
 imap <F3> <ESC><f3>a
+"MakePanel
+nnoremap <silent><F4> :MakePanelToggle<CR>
+imap <F4> <ESC><F4>
 "FilesTree
 nnoremap <silent><F5> :NERDTreeToggle<CR>
 imap <F5> <ESC><F5>

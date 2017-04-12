@@ -56,6 +56,8 @@ hi clear Conceal "clear conceal background
 "       plugins
 "==========================
 
+let g:asyncRunCommand='AsyncRun'
+
 "pathogen enable
 execute pathogen#infect()
 call pathogen#runtime_append_all_bundles()
@@ -92,7 +94,6 @@ let g:neosnippet#snippets_directory=['~/.vim/bundle/neosnippet-snippets/neosnipp
 
 "ttcnSupport
 let g:ttcnRootPath = '~/lte/trunk/'
-let g:asyncRunCommand='AsyncRun'
 
 "pythonSupport
 let g:pymode = 0
@@ -107,6 +108,11 @@ let g:LatexBox_split_type="new"
 
 "clang format
 let g:clang_format#command="clang-format-3.8"
+
+"makeSidePanel
+let g:makePanelCmd='make -f ~/lte/trunk/remote-cplane/Makefile'
+let g:makePanelTargetListLocation='~/.MakeTargets.txt'
+let g:makePanelRootPath='~/lte/trunk/'
 
 "startify
 let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
