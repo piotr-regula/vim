@@ -1,4 +1,3 @@
-bookmarks
 python from sys import argv
 python print "" % a
 update gmockGen to new version
