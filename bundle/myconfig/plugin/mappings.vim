@@ -15,9 +15,13 @@
 "                           FUNCTIONAL KEYS
 "================================================================
 
-"direxplorer
+"direxplorer in split window
 nnoremap <silent><f1> :Sexplore<CR>
-imap <f1> <esc><f1>a
+imap <f1> <esc><f1>
+
+"direxplorer in same window
+nnoremap <silent><s-f1> :Explore<CR>
+imap <s-f1> <esc><s-f1>
 "quit
 nnoremap <silent><F2> :q<CR>
 imap <F2> <ESC><f2>a
