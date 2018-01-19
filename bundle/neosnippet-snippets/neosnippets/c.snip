@@ -53,8 +53,10 @@ abbr		switch() {}
 	switch(${1:#:var})
 	{
 		case ${2:#:val}:
+		{
 			${0:TARGET}
 			break;
+		}
 	}
 
 snippet	 switchdef
@@ -62,8 +64,10 @@ abbr		switch() {}
 	switch(${1:#:var})
 	{
 		case ${2:#:val}:
+		{
 			${3:TARGET}
 			break;
+		}
 		default:
 		{
 			${0}
