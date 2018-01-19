@@ -25,7 +25,7 @@ fun! GenerateIdFilter(sourceFilePath, id)
     let l:bufName = "__ID:" . a:id . ".LOG"
     split `=l:bufName`
     setlocal buftype=nofile
-    exec 'silent! .!grep "ueContext[^]]*\<' . a:id . '\>" ' . a:sourceFilePath
+    exec 'silent! .!grep "\(ueContext\|cellId\)[^]]*\<' . a:id . '\>" ' . a:sourceFilePath
 endfun
 
 fun! LogFiltError()
