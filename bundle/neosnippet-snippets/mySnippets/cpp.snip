@@ -75,6 +75,116 @@ snippet exception
 #########################
 # STL Snippets
 #########################
+
+############
+# algorithm
+############
+
+#alg include
+
+snippet iall_of
+alias iallof iany_of ianyof inone_of inoneof ifor_each iforeach ibinary_search ibinarysearch icopy icopy_if icopyif icopy_n icopyn icount icount_if icountif iequal_range iequalrange ifind_if ifindif iadjacent_find iadjacentfind iincludes ipartition iupper_bound iupperbound ilower_bound ilowerbound imerge iremove iremove_if iremoveif
+	#include <algorithm>
+
+#alg snippets
+
+snippet all_of
+alias allof
+	std::all_of(std::begin(${1:v}), std::end($1), [](const auto& i){return ${2:i%2};})
+
+snippet any_of
+alias anyof
+	std::any_of(std::begin(${1:v}), std::end($1), [](const auto& i){return ${2:i%2};})
+
+snippet none_of
+alias noneof
+	std::none_of(std::begin(${1:v}), std::end($1), [](const auto& i){return ${2:i%2};})
+
+snippet for_each
+alias foreach
+	std::for_each(std::begin(${1:v}), std::end($1), [](const auto& i){${2:std::cout<<i<<endl};});
+
+snippet binary_search
+alias binarysearch
+	std::binary_search (${1:v.begin()}, ${2:v.end()}, ${3:3});
+
+snippet hbinary_search
+alias hbinarysearch
+	if (std::binary_search (v.begin(), v.end(), 3)) //v must be sorted!
+	std::cout << "found!\n"; else std::cout << "not found.\n";
+
+snippet copy
+	std::copy(std::begin(${1:from}), std::end($1), std::back_inserter(${2:to}));
+
+snippet copy_if
+alias copyif
+	std::copy_if(std::begin(${1:from}), std::end($1), std::back_inserter(${2:to}), [](const auto& i){ return ${3:i%2==0};});
+
+snippet copy_n
+alias copyn
+	std::copy_n(std::begin(${1:from}), ${2:2}, std::back_inserter(${3:to}));
+
+snippet count
+	std::count(std::begin(${1:v}), std::end($1), ${2:2});
+
+snippet count_if
+alias countif
+	std::count_if(std::begin(${1:v}), std::end($1), [](const auto& i){return ${2:i%2};});
+
+snippet equal_range
+alias equalrange
+	auto boundsIteratorPair = std::equal_range(std::begin(${1:sorted}), std::end($1), 20);
+
+snippet hequal_range
+alias hequalrange
+	int myints[] = {10,20,30,30,20,10,10,20};
+	std::vector<int> v(myints,myints+8);                         // 10 20 30 30 20 10 10 20
+	std::pair<std::vector<int>::iterator,std::vector<int>::iterator> bounds;
+	
+	// using default comparison:
+	std::sort (v.begin(), v.end());                              // 10 10 10 20 20 20 30 30
+	bounds=std::equal_range (v.begin(), v.end(), 20);            //          ^        ^
+
+snippet find_if
+alias findif
+	std::find_if(std::begin(${1:v}), std::end($1), [](const auto& i){return ${2:i%2};});
+
+snippet adjacent_find
+alias adjacentfind
+	std::adjacent_find(std::begin(${1:v}), std::end($1))
+
+snippet includes
+	std::includes(std::begin(${1:sorted}), std::end($1), std::begin(${2:sortedSubrange}), std::end($2))
+
+snippet partition
+	std::partition(std::begin(${1:v}), std::end($1), [](const auto& i){return ${2:i%2};})
+
+snippet lower_bound
+alias lowerbound
+	std::lower_bound(std::begin(${1:sorted}), std::end($1), ${2:20})
+
+snippet upper_bound
+alias upperbound
+	std::upper_bound(std::begin(${1:sorted}), std::end($1), ${2:20})
+
+snippet max_element
+alias maxelement
+	std::max_element(std::begin(${1:v}), std::end($1));
+
+snippet min_element
+alias minelement
+	std::min_element(std::begin(${1:v}), std::end($1));
+
+snippet merge
+	std::merge(std::begin(${1:sorted}), std::end($1), std::begin(${2:sorted2}), std::end($2), std::back_inserter(${3:result}))
+
+snippet remove
+	std::remove(std::begin(${1:v}), std::end($1), ${2:3})
+
+snippet remove_if
+alias removeif
+	std::remove_if(std::begin(${1:v}), std::end($1), [](const auto& i){return ${2:i%2};})
+
 snippet imax
 abbr    include max
 	#include <limits>
@@ -93,11 +203,6 @@ snippet ivector
 abbr    include vector
 	#include <vector>
 
-snippet ifor_each
-abbr include for_each
-	#include <algorithm>
-snippet for_each
-	for_each(v.begin(), v.end(), func);
 
 snippet imakeshared
 alias   imake_shared
@@ -209,18 +314,8 @@ snippet henable_if_t
 						   > //decay removes const volatile reference etc from T
 
 
-snippet icopy_if
-abbr include algorithm
-alias icopy itransform imax_element imin_element
-	#include <algorithm>
 
 
-snippet copy_if
-	std::copy_if(std::begin(${1:container}), std::end($1), std::back_inserter(${2:resultContainer}), [](const auto& p_elem){ return ${3:p_elem%2==0};});
-
-
-snippet copy
-	std::copy(std::begin(${1:from}), std::end($1), std::back_inserter(${2:to}));
 
 snippet transform
 	std::transform(std::begin(${1:from}), std::end($1), std::back_inserter(${2:to}), [](const auto& p_elem){ return ${3:p_elem+2};});
@@ -232,11 +327,6 @@ alias iunique_ptr ishared_ptr
 	#include <memory>
 
 
-snippet max_element
-	std::max_element(std::begin(${1:from}), std::end($1));
-
-snippet min_element
-	std::min_element(std::begin(${1:from}), std::end($1));
 
 #########################
 # BOOST Snippets
@@ -462,6 +552,9 @@ abbr help call_once(flag, function)
 #########################
 #      OTHER
 #########################
+
+snippet eraseIdiom
+	${1:v}.erase( std::remove( $1.begin(), $1.end(), ${2:2}), $1.end());
 
 snippet pimplClass
 abbr private implementation class
