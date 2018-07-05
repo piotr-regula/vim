@@ -252,7 +252,7 @@ nnoremap <C-space> :HighlightWordUnderCursorToggle<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+"  Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
 vnoremap <Leader>cf :ClangFormat<CR>
@@ -260,4 +260,8 @@ nnoremap <C-p> :FZF<CR>
 
 "fzf buffer lines fuzzy search
 nnoremap <leader>b :BLines<CR>
+
+"change fontsize
+nnoremap <A-=> :FontSizeIncrease 1<CR>
+nnoremap <A--> :FontSizeDecrease 1<CR>
 
