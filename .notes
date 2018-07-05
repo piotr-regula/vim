@@ -8,3 +8,7 @@ switchoocase break snippets
 move
 create default hpp/cpp/mock/testsuite
 gmockGen to include componentspecific google mock
+<leader>pi remove highlight and update with <leader>fd
+ctrl shift arrow to move buffers
+
+interface virtual destructor=default
