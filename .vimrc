@@ -34,6 +34,11 @@ let $PAGER=''
 set showmatch
 "match angle brackets
 set matchpairs+=<:>
+"enable dictionary completion
+set complete+=k
+
+"workaround for gx in gvim (open url links)
+let g:netrw_browsex_viewer="setsid xdg-open"
 "==========================
 "   visual configuration
 "==========================
