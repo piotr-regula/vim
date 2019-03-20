@@ -32,3 +32,35 @@ snippet listType
 
 snippet listTypeWithLength
 	type record length (${1:1} .. ${2:MAX}) of ${3:ElemType} ${4:TypeName}
+
+
+snippet function
+	function ${1:funcName}(${2:Type p_param})
+	${3:runs on TestComponent}
+	{
+		${4://code}
+	}
+
+snippet functionWithReturn
+	function ${1:funcName}(${2:Type p_param})
+	${3:runs on TestComponent}
+	return ${4:OutputType}
+	{
+		${5://code}
+		return 
+	}
+
+snippet transformed
+	transformed<${1:InputElemType}, ${2:OutputElemType}>(${3:inputElemList}, ${4:convFunc});
+	function $4($1 p_input)
+	return $2
+	{
+		return ${5://code}
+	}
+
+
+snippet modifies
+	modifies ${1:a_template} := 
+	{
+		${2://code}
+	}

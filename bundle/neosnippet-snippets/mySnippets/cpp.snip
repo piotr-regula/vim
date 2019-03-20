@@ -189,6 +189,7 @@ snippet imax
 abbr    include max
 	#include <limits>
 snippet max
+alias limit
 	std::numeric_limits<${1:type}>::max()
 snippet imin
 abbr    include min
@@ -595,3 +596,11 @@ abbr private implementation class
 	    *pImpl = *rhs.pImpl;
 	    return *this;
 	}
+
+snippet checkSize
+	template <typename ToCheck, std::size_t ExpectedSize, std::size_t RealSize = sizeof(ToCheck)>
+	void check_size() 
+	{
+	    static_assert(ExpectedSize == RealSize, "Size is off!");
+	}
+	check_size<SErrcRLFReportR9, SIZEOF_RLF_REPORT_R9>();
