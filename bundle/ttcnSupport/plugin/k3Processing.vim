@@ -108,8 +108,16 @@ fun! OpenRrcReconfInNewWindow()
     call PasteContentFromRegisterZ()
 endfun
 
+fun! ExpandStructure()
+    exec 'silent! %s/:=/=/g'
+    exec 'silent! %s/,/,\r/g'
+    exec 'silent! %s/\([{}]\)\([^,]\)/\r\1\r\2/g'
+    exec 'normal! ggVG='
+endfun
+
 command! -nargs=0 K3Filt call K3Filt()
 command! -nargs=0 K3Comp call K3Comp()
 command! -nargs=0 K3RrcReconf call K3RrcReconf()
+command! -nargs=0 K3ExpandStructure call ExpandStructure()
 
 
