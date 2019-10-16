@@ -364,8 +364,9 @@ snippet Test
 
 snippet TestWithParam
 	#include <gtest/gtest.h>
-	typedef boost::tuple<bool, bool> param;
-	struct TestSuite : public TestWithParam<param>
+	#include <tuple>
+	typedef std::tuple<bool, bool> Param;
+	struct TestSuite : public TestWithParam<Param>
 	{
 	public:
 	    TestSuite();
@@ -379,12 +380,12 @@ snippet TestWithParam
 	    TestSuiteParametrized,
 	    TestSuite,
 	    testing::Values(                 // flag1, flag2
-	           boost::make_tuple(true,  false),
-	           boost::make_tuple(false, true)));
+	           std::make_tuple(true,  false),
+	           std::make_tuple(false, true)));
 	
 	TestSuite::TestSuite() :
-	        flag1(boost::get<0>(GetParam())),
-	        flag2(boost::get<1>(GetParam())) {}
+	        flag1(std::get<0>(GetParam())),
+	        flag2(std::get<1>(GetParam())) {}
 	
 	TEST_P(TestSuite, test)
 	{
