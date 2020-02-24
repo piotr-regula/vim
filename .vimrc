@@ -45,7 +45,6 @@ let g:netrw_browsex_viewer="setsid xdg-open"
 
 syntax on
 colorscheme darktooth
-set guifont=Monaco\ 11
 set ruler
 set nowrap
 set nocompatible  "disable compatibility with older ver
@@ -104,6 +103,9 @@ let g:ttcnRootPath = '~/lte/trunk/'
 let g:pymode = 0
 let g:pymode_rope = 0
 let g:pymode_folding = 0
+
+"fzf
+set rtp+="~/.fzf"  "add fzf location to runtime path
 
 "myConfig
 let g:gmockGenCmd = '~/devTools/generator/gmock_gen.py'
