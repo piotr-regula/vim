@@ -44,7 +44,7 @@ let g:netrw_browsex_viewer="setsid xdg-open"
 "==========================
 
 syntax on
-colorscheme darktooth
+colorscheme gotham256
 set ruler
 set nowrap
 set nocompatible  "disable compatibility with older ver
@@ -122,7 +122,7 @@ let g:makePanelTargetListLocation='~/.MakeTargets.txt'
 let g:makePanelRootPath='~/lte/trunk/'
 
 "startify
-let g:startify_bookmarks = [ '~/.vimrc','~/.bashrc','~/lte/trunk' ]
+let g:startify_bookmarks = [  '~/lte/trunk_5G','~/.vimrc','~/.bashrc','~/lte/trunk' ]
 let g:startify_files_number = 10
 let g:startify_enable_special = 0
 let g:startify_list_order = [
