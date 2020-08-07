@@ -1,10 +1,10 @@
 snippet bash
-	#!/bin/bash
+	#!/usr/bin/env bash
 	set -o nounset
 	set -o errexit
 
-snippet bash2
-	#!/bin/bash
+snippet bash2WithTrapFunc
+	#!/usr/bin/env bash
 	set -o nounset
 	set -o errexit
 	function finish
@@ -13,12 +13,28 @@ snippet bash2
 	}
 	trap finish EXIT
 
+snippet bash3WithScriptVars
+	#!/usr/bin/env bash
+	set -o nounset
+	set -o errexit
+	SCRIPTNAME="$(basename \$0)"
+	SCRIPT_PATH="\`dirname \"\$0\"\`"
+	INCLUDE_DIR="${1:Script}-Include"
+	INCLUDE_PATH="${SCRIPT_PATH}/${INCLUDE_DIR}"
+	. "${INCLUDE_PATH}/$1Config.sh"
+
+snippet bashCondDirExists
+	[ -d "${1:/path/to/dir}" ] && echo "Directory $1 exists."
+
+snippet bashCondDirDoesntExists
+	[ ! -d "${1:/path/to/dir}" ] && echo "Directory $1 does not exists."
+
 snippet ignore_failing_command
- if ! ${1:<possible failing command>} ; then
+if ! ${1:<possible failing command>} ; then
     echo "failure ignored"
 fi
 
-snippet debug
+snippet bashDebug
 	set -o xtrace //trace what gets executed
 
 snippet nounset
